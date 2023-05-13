@@ -1,0 +1,17 @@
+# Pull out data
+```Shell
+dd if='file' of='output' skip= count= 
+
+```
+# Converting to binary
+```Shell
+xxd
+```
+# Pull out data
+```Shell
+
+```
+# Pull out data
+```Shell
+
+```
