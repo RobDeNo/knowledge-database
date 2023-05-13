@@ -1,0 +1,173 @@
+#Ext4
+#INODE table full of slots, stores meta data about a file
+	#Literally just a chart(etc/shadow, owned by this, owned by this group)
+
+###folders
+	/usr/bin non-essential binaries that are accessible by standard users as well as root?
+	/usr/sbin non-essential binaries that are accessible by standard users as well as root?
+##xxd will show the binary of a file
+	xxd "file name"
+	file /etc/pwd
+	pwd --help
+	Verb and objects
+	man pwd
+	man ufw
+	man 'iptables(8)'
+	man -k # will search for specified string
+	use the / to search man pages
+	directories=$(ls /)
+	/ # absolute path to root directory
+		echo $directories
+		for x in $directories; do echo $x; done
+		for x in $directories; do echo $x; done > file; done
+	man hier #Shows the hierarchy of the  file structure
+	ls -l # listing item with information
+	ls -lhs # Humanreadable, long list, 
+	whereis man cat
+	echo -n 'OneWayBestWay' | sha512sum # getting hash of a string
+	brw-rw---- 1 root disk 8, 0 May  9 11:56 /dev/sda
+	#owner #Group #Everyone (root) owner (disk) type 
+	stat file.txt
+		(0660/-rw-rw----)
+		(0600)/-rw------) = SSH Keys
+		(700)/-rwx------) = other keys
+		
+		(644)/-rw-r--r--) = fiel you own but want others to read
+		(4755)/-rwsr-xr-x) /usr/bin/passwd
+		(0731)
+	cat /etc/group # where all the groups are  located
+	grep openstack
+	grep -v openstack # anything -4 the four lines before each result
+	history | grep text
+		openstack server list | grep -oE [[:digit:]] [[:alnum:]]
+	openssl aes-128-cbc -d -a -in /home/garviel/Encrypted -out /home/garviel/Unencrypted
+	openssl enc -d -aes-128-cbc -in /home/garviel/Encrypted -out /home/garviel/Unencrypted
+	find /home -type f -not -name *.vdi.7z -exec wc -l {} \; | sort -nr
+	
+	
+	
+	for file in $(find /home -type f -not -name *.vdi); do echo -n "$(cat $file| wc -l) " ;echo $file; done | sort
+	for mac in $()
+	
+	
+	
+# Sorting and Filtering in linux
+	getent group | sort | grep guard	
+	awk '{gsub(",", "\n"); print}' guard.txt > newguards.txt
+	#gsub(",", "\n") is the awk function that replaces all occurrences of a comma , with a newline character \n
+	#print prints the modified line.
+	awk '{print $1","$2","$3","$4","$5","$6}
+	grep lodge /etc/group
+	
+	cat /etc/passwd | grep -v "nologin" | grep -v "bash"
+	garviel,tarik,aximand,ezekyle,sejanus,erebus,mephiston
+	sudo -u gaunt ./Tactica_Impe
+	ls -lisa /etc/ | grep '\.d$'
+	pwd
+	grep --p '^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$' /home/garviel/numbers | wc -l #absolutly ips
+	grep --p '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' /home/garviel/numbers | wc -l
+	grep --p '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$' /home/garviel/numbers | wc -l #kinda IPs
+	grep --p '(([0-9A-Fa-f]{2}[-:]){5}[0-9A-Fa-f]{2})|(([0-9A-Fa-f]{4}\.){2}[0-9A-Fa-f]{4})' /home/garviel/numbers #exact mac address
+	grep --p '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$' /home/garviel/numbers #exact mac address
+	grep --p '\b([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})\b' /home/garviel/numbers man awk
+
+	grep --p '^([0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}$' /home/garviel/numbers | wc -l
+	grep --p '^([0-9A-Fa-f]{2}-){5}[0-9A-Fa-f]{2}$' /home/garviel/numbers
+
+
+	^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$
+
+	cat /home/garviel/numbers | sed -n '420'
+	cat /home/garviel/numbers | awk 'NR >= 420 && NR <= 1337' |sha512sum
+	awk '{print $1","$2","$3","$4","$5","$6}' /home/garviel/connections > test.csv
+
+	grep --p '^([0][0-1]{2}[:-]){5}([0-9A-Fa-f]{2})$' /home/garviel/numbers
+
+	grep $Home "usr"
+	
+
+#### Awk
+$ articles=$(curl -L https://www.dailymail.co.uk/ushome/index.html --output - | grep itemprop | grep href | awk -F "\"" '{print$4}'|  awk -F "/" '{print$4}')
+
+### sed
+	sed -e 's|-| |g' -e 's|\.html||g' news.txt >	
+	
+#Redirection
+	find /-type f -name *.py
+	find /-type f -name *.py 2>/dev/null #This is sending the erros to the null
+		
+#How do find things you don't know
+	apropos -k count
+#Situational Awareness
+	hostname / uname -a
+#Piping 
+	. /dev/projects/ansible-deployer/os/dev.rc
+	openstack server list | cut -d '|' -f2 | tail -n +4 | head -n -1); do openstack server reboot --hard $server; done ^c
+		#cutting the delimiter with the | , selecting field 2
+		#first field is always the first of the delimiter
+#looping YAHHHHHHHHHH
+	vi this
+	for x in $(seq 1 10); do echo$x; done
+#IF statement - does pattern matching
+
+# 0 = true / 1-XX = False	
+for x in list; do
+	thing
+done
+
+while ( $booleanCondition ); do
+	thing
+done
+
+if ( $boolean Condition ); then
+	do thing
+elif ($otherBoolean); then
+	do other thing
+else;
+	do default thing
+fi
+
+case $switch in
+	pattern1)
+		do this 
+		then do this
+		;;
+	pattern2)
+		do this
+		;;
+	pattern3)
+	throw and error?;;
+esc
+
+### EXAMPLE FOR LOOP
+	for object in $objects; 
+	do if [-d $object ]; 
+	then echo "$object is a directory"; 
+	else echo "$object is a file" ; 
+	fi ; done 
+### EXAMPLE WHILE LOOP
+	while [ 1 -eq 1 ]; 
+	do echo "To Infinity and Beyond!"; 
+	done 
+	#################################################################################################
+	curtime=$(date +"%s") 
+	echo $curtime
+	
+	exittime=$(expr $curtime + 3) 
+	echo $exittime
+	
+	while [ $exittime -ge $curtime ]; 
+	do echo "To Infinity and Beyond?" ; 
+	curtime=$(date +"%s") ; done 
+	
+	
+	
+	Entering the correct flag will unlock this category.
+
+All SysV challenges are in Minas_Tirith, all SystemD challenges are in Terra.
+
+Reference your Range Diagram for credential and connection information.
+
+
+
+	
