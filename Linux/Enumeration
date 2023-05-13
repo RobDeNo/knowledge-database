@@ -1,6 +1,6 @@
 # ENUMAERTIOAN
 # [Nmap Scans](nmap)
-
+[IP Information](/Multi-Domain/IP_INFO)
 ```Shell
 nmap -sV -S 'ip' #test
 nmap 'ip'
@@ -9,6 +9,30 @@ nmap --script=rpcinfo -p111 'ip' ### This will use the RPC Vulnerability to scan
 nmap 'ip'
 nmap 'ip'
 nmap 'ip'
+```
+# Port Scans
+```Shell
+nmap 'ip'
+nmap 'ip'
+nmap 'ip'
+```
+# Port Scans
+```Shell
 
 ```
 # Port Scans
+```Shell
+
+```
+# Port Scans
+```Shell
+
+```
+# Port Scans
+```Shell
+
+```
+# Port Scans
+```Shell
+
+```

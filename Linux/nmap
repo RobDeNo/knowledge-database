@@ -36,47 +36,56 @@ nmap [ <Scan Type> ...] [ <Options> ] { <target specification> }
   --port-ratio <ratio>: #Scan ports more common than <ratio>
   ```
 # SERVICE/VERSION DETECTION:
-  -sV: Probe open ports to determine service/version info
-  --version-intensity <level>: Set from 0 (light) to 9 (try all probes)
-  --version-light: Limit to most likely probes (intensity 2)
-  --version-all: Try every single probe (intensity 9)
-  --version-trace: Show detailed version scan activity (for debugging)
+```Shell
+  -sV: #Probe open ports to determine service/version info
+  --version-intensity <level>: #Set from 0 (light) to 9 (try all probes)
+  --version-light: #Limit to most likely probes (intensity 2)
+  --version-all: #Try every single probe (intensity 9)
+  --version-trace: #Show detailed version scan activity (for debugging)
+```
 # SCRIPT SCAN:
-  -sC: equivalent to --script=default
-  --script=<Lua scripts>: <Lua scripts> is a comma separated list of
-           directories, script-files or script-categories
-  --script-args=<n1=v1,[n2=v2,...]>: provide arguments to scripts
-  --script-trace: Show all data sent and received
-  --script-updatedb: Update the script database.
+```Shell
+  -sC: #equivalent to --script=default
+  --script=<Lua scripts>: #<Lua scripts> is a comma separated list of directories, script-files or script-categories
+  --script-args=<n1=v1,[n2=v2,...]>: #provide arguments to scripts
+  --script-trace: #Show all data sent and received
+  --script-updatedb: #Update the script database.
+  ```
 # OS DETECTION:
-  -O: Enable OS detection
-  --osscan-limit: Limit OS detection to promising targets
-  --osscan-guess: Guess OS more aggressively
+```Shell
+  -O: #Enable OS detection
+  --osscan-limit: #Limit OS detection to promising targets
+  --osscan-guess: #Guess OS more aggressively
+  ```
 # TIMING AND PERFORMANCE:
+```Shell
   Options which take <time> are in seconds, or append 'ms' (milliseconds),
   's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).
-  -T<0-5>: Set timing template (higher is faster)
-  --min-hostgroup/max-hostgroup <size>: Parallel host scan group sizes
-  --min-parallelism/max-parallelism <numprobes>: Probe parallelization
-  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: Specifies
-      probe round trip time.
-  --max-retries <tries>: Caps number of port scan probe retransmissions.
-  --host-timeout <time>: Give up on target after this long
-  --scan-delay/--max-scan-delay <time>: Adjust delay between probes
-  --min-rate <number>: Send packets no slower than <number> per second
-  --max-rate <number>: Send packets no faster than <number> per second
-# FIREWALL/IDS EVASION AND SPOOFING:
-  -f; --mtu <val>: fragment packets (optionally w/given MTU)
-  -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
-  -S <IP_Address>: Spoof source address
-  -e <iface>: Use specified interface
-  -g/--source-port <portnum>: Use given port number
-  --data-length <num>: Append random data to sent packets
-  --ip-options <options>: Send packets with specified ip options
-  --ttl <val>: Set IP time-to-live field
-  --spoof-mac <mac address/prefix/vendor name>: Spoof your MAC address
-  --badsum: Send packets with a bogus TCP/UDP/SCTP checksum
+  -T<0-5>: #Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup <size>: #Parallel host scan group sizes
+  --min-parallelism/max-parallelism <numprobes>: #Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: #Specifies probe round trip time.
+  --max-retries <tries>: #Caps number of port scan probe retransmissions.
+  --host-timeout <time>: #Give up on target after this long
+  --scan-delay/--max-scan-delay <time>: #Adjust delay between probes
+  --min-rate <number>: #Send packets no slower than <number> per second
+  --max-rate <number>: #Send packets no faster than <number> per second
+  ```
+# FIREWALL/IDS EVASION AND SPOOFING: 
+```Shell
+  -f; --mtu <val>: #fragment packets (optionally w/given MTU)
+  -D <decoy1,decoy2[,ME],...>: #Cloak a scan with decoys
+  -S <IP_Address>: #Spoof source address
+  -e <iface>: #Use specified interface
+  -g/--source-port <portnum>: #Use given port number
+  --data-length <num>: #Append random data to sent packets
+  --ip-options <options>: #Send packets with specified ip options
+  --ttl <val>: #Set IP time-to-live field
+  --spoof-mac <mac address/prefix/vendor name>: #Spoof your MAC address
+  --badsum: #Send packets with a bogus TCP/UDP/SCTP checksum
+  ```
 # OUTPUT:
+```Shell
   -oN/-oX/-oS/-oG <file>: Output scan in normal, XML, s|<rIpt kIddi3,
      and Grepable format, respectively, to the given filename.
   -oA <basename>: Output in the three major formats at once
