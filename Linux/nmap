@@ -101,17 +101,22 @@ nmap [ <Scan Type> ...] [ <Options> ] { <target specification> }
   --stylesheet <path/URL>: XSL stylesheet to transform XML output to HTML
   --webxml: Reference stylesheet from Nmap.Org for more portable XML
   --no-stylesheet: Prevent associating of XSL stylesheet w/XML output
+  ```
 # MISC:
-  -6: Enable IPv6 scanning
-  -A: Enable OS detection, version detection, script scanning, and traceroute
-  --datadir <dirname>: Specify custom Nmap data file location
-  --send-eth/--send-ip: Send using raw ethernet frames or IP packets
-  --privileged: Assume that the user is fully privileged
-  --unprivileged: Assume the user lacks raw socket privileges
-  -V: Print version number
-  -h: Print this help summary page.
+```Shell
+  -6: #Enable IPv6 scanning
+  -A: #Enable OS detection, version detection, script scanning, and traceroute
+  --datadir <dirname>: #Specify custom Nmap data file location
+  --send-eth/--send-ip: #Send using raw ethernet frames or IP packets
+  --privileged: #Assume that the user is fully privileged
+  --unprivileged: #Assume the user lacks raw socket privileges
+  -V: #Print version number
+  -h: #Print this help summary page.
+  ```
 # EXAMPLES:
+```Shell
   nmap -v -A scanme.nmap.org
   nmap -v -sn 192.168.0.0/16 10.0.0.0/8
   nmap -v -iR 10000 -Pn -p 80
+  ```
 SEE THE MAN PAGE (http://nmap.org/book/man.html) FOR MORE OPTIONS AND EXAMPLES
