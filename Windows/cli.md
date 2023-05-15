@@ -27,10 +27,13 @@ sc query
 sc queryex type=service
 #view extned for all not running services
 sc queryex type=service state=inactive
+sc queryex type=service state=all
 sc /? #basic service enumeration
 sc qc #configuration information for a service
 sc qdescription #query eventlog service Description
 sc enumdepend #query service that cannot run wih oout specific service running
+ sc <server> [command] [service name] <option1> <option2>...
+
 ```
 # schtasks
 ```cli
@@ -39,3 +42,6 @@ schtasks /create /tn "IchBinBosh" /tr "C:\Users\Andy.dwyer\Downloads\IchBinBash.
 schtasks 
 
 ```
+#reg query HKLM\System\CurrentControlSet\Control\lsa\Kerberos
+# Registry location for DLLs
+- Parameters

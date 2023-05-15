@@ -95,7 +95,7 @@ $ articles=$(curl -L https://www.dailymail.co.uk/ushome/index.html --output - | 
 #Redirection
 	find /-type f -name *.py
 	find /-type f -name *.py 2>/dev/null #This is sending the erros to the null
-		
+	find . -name warp*	
 #How do find things you don't know
 	apropos -k count
 #Situational Awareness
