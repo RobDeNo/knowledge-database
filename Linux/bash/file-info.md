@@ -1,0 +1,33 @@
+```Shell
+Option	Description
+--apple	#Changes the command output to the one used by older versions of MacOS.
+-b, --brief	#Changes command output to brief mode.
+-C, --compile	#Creates an output file that contains a pre-parsed version of the magic file or directory.
+-c, --checking-printout	#Checks the printout for the parsed version of the magic file.
+-d	#Prints internal debugging information in the standard error format.
+-E	#On filesystem error, issues an error message and exits.
+-e, --exclude	#Excludes a test from the list of tests performed on a file.
+--exclude-quiet	#Excludes tests that the file command doesn't know about.
+--extension	#Prints a list of valid extensions for the file type.
+-F, --separator	#Uses the provided string as a separator between the file name and file type.
+-f, --files-from	#Uses a provided text file as a list of files to test. The list must contain only one file name per line.
+-h, --no-deference	#Disables following symbolic links.
+-i, --mime	#Changes the command output to a MIME-type string.
+--mime-type, --mime-encoding	#Changes the command output to a MIME-type string and only displays the specified element (type or encoding).
+-k, --keep-going	#Keeps the test going after the first results match.
+-l, --list	#Shows a list of matching patterns in descending order of strength.
+-L, --deference	#Enables following symbolic links.
+-m, --magic-file	#Uses an alternative magic file provided by the user.
+-N, --no-pad	#Doesn't pad the file names to align with the output.
+-n, --no-buffer	#Flushes the output after checking each file.
+-p, --preserve-date	#Attempts to preserve the last time the file was accessed to make it look like the file command didn't test it.
+-P, --parameter	#Sets various parameters, such as max bytes or recursion, count, and length limit.
+-r, --raw	#Disables translating unprintable characters.
+-s, --special-files	#Enables reading special files.
+-S, --no-sandbox	#Disables sandboxing on systems that support it.
+-v, --version	#Displays the version of the file command.
+-z, --uncompress	#Checks compressed files.
+-Z, --uncompress-noreport	#Checks compressed files and only displays file type without the compression.
+-0, --print0	#Displays a null character after the end of the file name.
+--help	#Displays the help message.
+```
