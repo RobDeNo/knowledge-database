@@ -103,7 +103,8 @@ Get-Service | where Status -eq "Stopped"
 # Lists Processes that have Greater Than 1000 Handles                     
 Get-Process | Where-Object -Property Handles -GE -Value 1000    
 # Same as above
-Get-Process | where Handles -GE 1000                            
+Get-Process | where Handles -GE 1000    
+Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Services\                
 ```
 # 2.8 Commenting in PowerShell
  ```powershell

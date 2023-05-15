@@ -5,7 +5,6 @@
 ```Shell
 nmap -sV -S 'ip' #test
 nmap 'ip'
-nmap -p- 'ip'
 nmap --script=rpcinfo -p111 'ip' ### This will use the RPC Vulnerability to scan stuff
 nmap 'ip'
 nmap 'ip'
