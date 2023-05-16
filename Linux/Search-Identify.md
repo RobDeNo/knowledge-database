@@ -50,7 +50,7 @@ stat -L /etc/resolv.conf #Derefence symbolick links
 lsblk #shows the 
 
 
-
+find 
 
 
 ```

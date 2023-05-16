@@ -33,6 +33,7 @@ sc qc #configuration information for a service
 sc qdescription #query eventlog service Description
 sc enumdepend #query service that cannot run wih oout specific service running
  sc <server> [command] [service name] <option1> <option2>...
+sc.exe showsid cmd.exe
 
 ```
 # schtasks
