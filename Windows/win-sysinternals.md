@@ -19,7 +19,7 @@ PROCMON
     ```powershell
     mstsc /v:10.10.0.5
     ```
-#Windows Firewall Profiles
+# Windows Firewall Profiles
 ```powershell
 Get-NetFirewallProfile
 ```
