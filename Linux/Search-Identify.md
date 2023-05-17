@@ -51,6 +51,21 @@ lsblk #shows the
 
 
 find 
+Linux Basics Bash Logic2 10
+put s/bin into a file
+grep -Fsf
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+/usr/games
+/usr/local/games
+/snap/bin
+create file of jsut file names
+ls /usr/bin | xargs -n 1 basename
+grep -Fsf /home/garviel/binnames.txt /bin
 
 
 ```

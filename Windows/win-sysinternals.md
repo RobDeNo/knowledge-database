@@ -6,10 +6,10 @@ net use * http://live.sysinternals.com
 New-PSDrive -name "SysInt" -PSProvider Filesystem -Root "\\live.sysinternals.com\Tool"
 Get-PSDrive
 echo $env:path #this will view the path
-$env:path+=";Z"
+$env:path+=";Z:\"
 $env:path="(env:path);z:\"
 
-net use * http://live.sysinternals.com; Get-PSDrive; New-PSDrive -name "SysInt" -PSProvider Filesystem -Root "\\live.sysinternals.com\Tool"; $env:path+=";Z"
+net use * http://live.sysinternals.com; Get-PSDrive; New-PSDrive -name "SysInt" -PSProvider Filesystem -Root "\\live.sysinternals.com\Tool"; $env:path+=";Z:\"
 ```
 # Tools in sys in
 PROCMON
@@ -156,7 +156,7 @@ LoadOrd.exe example.txt
 
 #Streams - Reveal NTFS alternate streams.
 
-#Strings - Search for ANSI and UNICODE strings in binaryimages.
+#Strings - Search for ANSI and UNICODE strings in binaryimages.Can also read databse files found in software such as chrome
 
 #Sync - Flush cached data to disk.
 
