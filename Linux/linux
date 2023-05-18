@@ -41,7 +41,7 @@
 	history | grep text
 		openstack server list | grep -oE [[:digit:]] [[:alnum:]]
 	openssl aes-128-cbc -d -a -in /home/garviel/Encrypted -out /home/garviel/Unencrypted
-	openssl enc -d -aes-128-cbc -in /home/garviel/Encrypted -out /home/garviel/Unencrypted
+	openssl enc -d -aes-128-cbc -in /home/garviel/cipher -out /home/garviel/Unencrypted #This
 	find /home -type f -not -name *.vdi.7z -exec wc -l {} \; | sort -nr
 	
 	
