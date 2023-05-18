@@ -155,7 +155,7 @@ Machine: file-server
 Get-Eventlog -LogName Security | ft -wrap | findstr /i "flag"
 Get-Eventlog -LogName System | ft -wrap | findstr /i "flag"
 Get-WinEvent Microsoft-Windows-PowerShell/Operational |Where-Object {$_.Message -ilike "*flag*"} | Format-List
-
+.......................the flag is: the Flag
 ```
 -------------------------------------------
 # Windows_Recycle_Bin_310
