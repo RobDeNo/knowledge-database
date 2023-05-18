@@ -155,9 +155,7 @@ Machine: file-server
 Get-Eventlog -LogName Security | ft -wrap | findstr /i "flag"
 Get-Eventlog -LogName System | ft -wrap | findstr /i "flag"
 Get-WinEvent Microsoft-Windows-PowerShell/Operational |Where-Object {$_.Message -ilike "*flag*"} | Format-List
-Get-EventLog -LogName Application | sort -property message -unique | ft -wrap | findstr -i "flag"
-  1445 Feb 25 16:36  Information Microsoft-Windows-DH        51047 DHCPv6 client service is stopped. ShutDown Flag value is 1
-                                                                     following information is part of the event:'......................the Flag is:the Flag'
+.......................the flag is: the Flag
 ```
 -------------------------------------------
 # Windows_Recycle_Bin_310
