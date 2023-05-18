@@ -155,19 +155,20 @@ Machine: file-server
 Get-Eventlog -LogName Security | ft -wrap | findstr /i "flag"
 Get-Eventlog -LogName System | ft -wrap | findstr /i "flag"
 Get-WinEvent Microsoft-Windows-PowerShell/Operational |Where-Object {$_.Message -ilike "*flag*"} | Format-List
-
+Get-EventLog -LogName Application | sort -property message -unique | ft -wrap | findstr -i "flag"
+  1445 Feb 25 16:36  Information Microsoft-Windows-DH        51047 DHCPv6 client service is stopped. ShutDown Flag value is 1
+                                                                     following information is part of the event:'......................the Flag is:the Flag'
 ```
 -------------------------------------------
 # Windows_Recycle_Bin_310
 ## Recover the flag from the Recycle Bin. Enter the name of the recycle bin file that contained the contents of the flag, and the contents of the deleted file. Flag format: filename,contents
-```powerful
+```powershell
 Get-Content 'C:\$RECYCLE.BIN\S-1-5-21-2881336348-3190591231-4063445930-1003\$R*' #this will get the content for all files in the recyling bin
 Get-content 'C:\Users\vanhe\Documents\file.txt
 
 $R1WANPJ.txt,DontTrashMeyo
-
-
-
 ```
 -------------------------------------------
+# Windows_Logs_415
+## Check event logs for a flag string.
 
