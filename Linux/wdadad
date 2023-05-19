@@ -1,1 +1,12 @@
 dwadawhttps://vscode.dev/github/RobDeNo/knowledge-database/blob/master/Test%20Folder/Linux#L9
+check cronjob
+check powershell profiles
+.profilepages 
+/etc inittab
+check rc files
+
+```powershell
+
+                                    	$OutFile = 'C:\Scripts\AccountExpiredUsers.csv' # your output file
+Get-ADUser -Filter * -Properties Name, Enabled, AccountExpirationDate, LastLogonDate | ? {($_.AccountExpirationDate -NE $NULL -AND $_.AccountExpirationDate -LT (Get-Date)) }  | foreach {Add-Content -path $OutFile "$($_.Name),$($_.Enabled)"}
+						

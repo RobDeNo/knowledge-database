@@ -216,11 +216,6 @@ jq '"resp_bytes">40' /home/garviel/conn.log
 jq '.|.select("resp_bytes>40") | "id.orig_h"' /home/garviel/conn.log
 jq '.|select(.resp_bytes>40) | ."id.orig_h"' /home/garviel/conn.log
 
-```
-----------------------------------
-# 
-## 
-```shell
 
 ```
 ----------------------------------
@@ -236,10 +231,10 @@ jq '.|select(.resp_bytes>40) | ."id.orig_h"' /home/garviel/conn.log
 
 ```
 ----------------------------------
-# 
-## 
+# Linux Auditing and Logging Whut 310
+## Identify the Cyber Attack Technique that Balrog is trying on the machine.
 ```shell
-
+Credential Access
 ```
 ----------------------------------
 # 
@@ -247,3 +242,25 @@ jq '.|select(.resp_bytes>40) | ."id.orig_h"' /home/garviel/conn.log
 ```shell
 
 ```
+----------------------------------
+# Linux Auditing and Logging XML 515
+## File: /home/garviel/output.xml Select every IP address with open (in use) ports using XPATH queries and XPATH axes.
+Pipe the result to md5sum for the flag
+Sample Output (without piping to MD5SUM)
+addr="10.50.29.5"
+portid="xx"
+addr="xx.xx.xx.xx"
+portid="xx"
+--TRIMMED--
+```shell
+xpath -q -e '//address/@addr | //port/@portid | //state/@state="open"' /home/garviel/output.xml |md5sum
+xpath -q -e 
+xpath -q -e '//address/@addr | //port/@portid | //state[@state='open]' /home/garviel/output.xml | grep -v "closed\|up" | md5sum
+//title[@lang='en']
+xpath -q -e '//address/@addr | //port/@portid | //state[@state="open"]' /home/garviel/output.xml
+xpath -q -e '//state@state='open']' /home/garviel/output.xml
+<host starttime="1615317877" endtime="1615318249"><status state="up" reason="user-set" reason_ttl="0"/>
+xpath -q -e '//status/@state' /home/garviel/output.xml
+xpath -q -e '//status/@state' /home/garviel/output.xml
+```
+extract it, 2 variable to interate down, back into main folder

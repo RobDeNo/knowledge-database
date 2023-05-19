@@ -132,3 +132,5 @@ json
 
 ```
 ------------------------------
+# command will read binary file
+last -f /var/log/tmp
