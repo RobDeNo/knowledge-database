@@ -243,7 +243,7 @@ Credential Access
 
 ```
 ----------------------------------
-# Linux Auditing and Logging XML 515
+# Linux Auditing and Logging XML 5 15
 ## File: /home/garviel/output.xml Select every IP address with open (in use) ports using XPATH queries and XPATH axes.
 Pipe the result to md5sum for the flag
 Sample Output (without piping to MD5SUM)
@@ -262,5 +262,28 @@ xpath -q -e '//state@state='open']' /home/garviel/output.xml
 <host starttime="1615317877" endtime="1615318249"><status state="up" reason="user-set" reason_ttl="0"/>
 xpath -q -e '//status/@state' /home/garviel/output.xml
 xpath -q -e '//status/@state' /home/garviel/output.xml
+```
+----------------------------------
+# Linux Auditing and logging WHUT 5
+## 
+```shell
+Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\
+
+
+Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
+Apr 6 13:37:31 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
+Apr 6 14:13:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
+Apr 6 14:13:38 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
+Apr 6 14:15:01 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh \;
+Apr 6 14:15:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh \;
+
+Apr 6 00:00:03 linux-opstation-7qhp systemd-logind[993]: New session 189 of user Frodo.
+Apr 6 09:35:52 linux-opstation-7qhp systemd-logind[993]: New session 190 of user Balrog.
+Apr 6 13:34:19 linux-opstation-7qhp systemd-logind[993]: New session 200 of user Saruman.
+Apr 6 13:58:22 linux-opstation-7qhp systemd-logind[993]: New session 201 of user Saruman.
+
+2h,30m,find /etc/passwd -exec /bin/sh \;,2
+```
+----------------------------------
 ```
 extract it, 2 variable to interate down, back into main folder
