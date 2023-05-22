@@ -1,0 +1,480 @@
+PS C:\Users\bob> . 'C:\Users\bob\Desktop\ps_enum.ps1'
+
+
+Now Checking Forensic Keys
+
+==================================================================
+
+
+    Hive: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
+
+
+Name                           Property
+----                           --------
+Disk&Ven_SanDisk&Prod_Ultra&Re
+v_1.00
+
+
+    Hive: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum
+
+
+Name                           Property
+----                           --------
+USBSTOR
+
+==================================================================
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+
+
+Name                           Property
+----                           --------
+S-1-5-18                       Flags            : 12
+                               ProfileImagePath : C:\Windows\system32\config\systemprofile
+                               RefCount         : 1
+                               Sid              : {1, 1, 0, 0...}
+                               State            : 0
+S-1-5-19                       Flags            : 0
+                               ProfileImagePath : C:\Windows\ServiceProfiles\LocalService
+                               State            : 0
+S-1-5-20                       Flags            : 0
+                               ProfileImagePath : C:\Windows\ServiceProfiles\NetworkService
+                               State            : 0
+S-1-5-21-560952811-1800142268- ProfileImagePath                        : C:\Users\rob
+636105272-1001                 Flags                                   : 0
+                               FullProfile                             : 1
+                               State                                   : 0
+                               Sid                                     : {1, 5, 0, 0...}
+                               LocalProfileLoadTimeLow                 : 3043851622
+                               LocalProfileLoadTimeHigh                : 31034574
+                               ProfileAttemptedProfileDownloadTimeLow  : 0
+                               ProfileAttemptedProfileDownloadTimeHigh : 0
+                               ProfileLoadTimeLow                      : 0
+                               ProfileLoadTimeHigh                     : 0
+                               LocalProfileUnloadTimeLow               : 2988001389
+                               LocalProfileUnloadTimeHigh              : 31034414
+                               RunLogonScriptSync                      : 0
+S-1-5-21-560952811-1800142268- ProfileImagePath                        : C:\Users\bob
+636105272-1002                 Flags                                   : 0
+                               FullProfile                             : 1
+                               State                                   : 0
+                               Sid                                     : {1, 5, 0, 0...}
+                               LocalProfileLoadTimeLow                 : 2999676102
+                               LocalProfileLoadTimeHigh                : 31034587
+                               ProfileAttemptedProfileDownloadTimeLow  : 0
+                               ProfileAttemptedProfileDownloadTimeHigh : 0
+                               ProfileLoadTimeLow                      : 0
+                               ProfileLoadTimeHigh                     : 0
+                               RunLogonScriptSync                      : 0
+                               LocalProfileUnloadTimeLow               : 1304894614
+                               LocalProfileUnloadTimeHigh              : 31034359
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+
+
+Name                           Property
+----                           --------
+ProfileList                    Default           : C:\Users\Default
+                               ProfilesDirectory : C:\Users
+                               ProgramData       : C:\ProgramData
+                               Public            : C:\Users\Public
+
+Default           : C:\Users\Default
+ProfilesDirectory : C:\Users
+ProgramData       : C:\ProgramData
+Public            : C:\Users\Public
+PSPath            : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+PSParentPath      : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+PSChildName       : ProfileList
+PSDrive           : HKLM
+PSProvider        : Microsoft.PowerShell.Core\Registry
+
+
+==================================================================
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles
+
+
+Name                           Property
+----                           --------
+{19B708B0-D744-4823-B289-49BEE ProfileName       : OpenVPN TAP-Windows6
+6708C86}                       Description       : OpenVPN TAP-Windows6
+                               Managed           : 0
+                               Category          : 0
+                               DateCreated       : {231, 7, 5, 0...}
+                               NameType          : 53
+                               DateLastConnected : {231, 7, 5, 0...}
+{9BD40033-928F-4D6F-9DEA-C7450 ProfileName       : Hilton Honors
+D048F98}                       Description       : Hilton Honors
+                               Managed           : 0
+                               Category          : 0
+                               DateCreated       : {231, 7, 5, 0...}
+                               NameType          : 71
+                               DateLastConnected : {231, 7, 5, 0...}
+{DD9AA564-AFD5-4709-89CA-34423 ProfileName       : Network
+C66F4E1}                       Description       : Network
+                               Managed           : 0
+                               Category          : 0
+                               DateCreated       : {231, 7, 4, 0...}
+                               NameType          : 6
+                               DateLastConnected : {231, 7, 5, 0...}
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList
+
+
+Name                           Property
+----                           --------
+Profiles
+
+==================================================================
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU
+
+
+Name                           Property
+----                           --------
+*                              0         : {20, 0, 31, 80...}
+                               MRUListEx : {7, 0, 0, 0...}
+                               1         : {20, 0, 31, 88...}
+                               2         : {20, 0, 31, 80...}
+                               3         : {20, 0, 31, 80...}
+                               4         : {20, 0, 31, 80...}
+                               5         : {20, 0, 31, 80...}
+                               6         : {20, 0, 31, 80...}
+                               7         : {20, 0, 31, 80...}
+                               8         : {20, 0, 31, 80...}
+                               9         : {20, 0, 31, 80...}
+                               10        : {20, 0, 31, 80...}
+                               11        : {20, 0, 31, 80...}
+                               12        : {20, 0, 31, 80...}
+                               13        : {20, 0, 31, 80...}
+                               14        : {20, 0, 31, 80...}
+                               15        : {20, 0, 31, 80...}
+                               16        : {20, 0, 31, 80...}
+                               17        : {20, 0, 31, 88...}
+                               18        : {20, 0, 31, 80...}
+                               19        : {20, 0, 31, 88...}
+bash                           0         : {20, 0, 31, 88...}
+                               MRUListEx : {0, 0, 0, 0...}
+bat                            0         : {20, 0, 31, 80...}
+                               MRUListEx : {0, 0, 0, 0...}
+conf                           0         : {20, 0, 31, 80...}
+                               MRUListEx : {0, 0, 0, 0...}
+msi                            0         : {20, 0, 31, 80...}
+                               MRUListEx : {1, 0, 0, 0...}
+                               1         : {20, 0, 31, 80...}
+ovpn                           0         : {20, 0, 31, 80...}
+                               MRUListEx : {4, 0, 0, 0...}
+                               1         : {20, 0, 31, 80...}
+                               2         : {20, 0, 31, 80...}
+                               3         : {20, 0, 31, 80...}
+                               4         : {20, 0, 31, 80...}
+ps1                            0         : {20, 0, 31, 80...}
+                               MRUListEx : {5, 0, 0, 0...}
+                               1         : {20, 0, 31, 88...}
+                               2         : {20, 0, 31, 80...}
+                               3         : {20, 0, 31, 80...}
+                               4         : {20, 0, 31, 80...}
+                               5         : {20, 0, 31, 80...}
+py                             0         : {20, 0, 31, 80...}
+                               MRUListEx : {0, 0, 0, 0...}
+sh                             0         : {20, 0, 31, 80...}
+                               MRUListEx : {2, 0, 0, 0...}
+                               1         : {20, 0, 31, 88...}
+                               2         : {20, 0, 31, 80...}
+txt                            0         : {20, 0, 31, 80...}
+                               MRUListEx : {2, 0, 0, 0...}
+                               1         : {20, 0, 31, 80...}
+                               2         : {20, 0, 31, 80...}
+zip                            0         : {20, 0, 31, 80...}
+                               MRUListEx : {0, 0, 0, 0...}
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32
+
+
+Name                           Property
+----                           --------
+OpenSavePidlMRU
+
+==================================================================
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows Search\ProcessedSearchRoots
+
+
+Name                           Property
+----                           --------
+0000                           (default)                   : defaultroot://{S-1-5-21-560952811-1800142268-636105272-1002}/
+                               Version                     : 0
+                               DoNotCreateSearchConnectors : 1
+0001                           (default)                   : file:///C:\
+                               Version                     : 0
+                               DoNotCreateSearchConnectors : 1
+0002                           (default) : winrt://{S-1-5-21-560952811-1800142268-636105272-1002}/
+                               Version   : 0
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows Search
+
+
+Name                           Property
+----                           --------
+ProcessedSearchRoots
+
+==================================================================
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search
+
+
+Name                           Property
+----                           --------
+Flighting                      RotateFlight        : 1
+                               Current             : 0
+                               CachedFeatureString :
+Microsoft.Windows.Search_cw5n1
+h2txyewy
+Launch
+
+
+    Hive: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion
+
+
+Name                           Property
+----                           --------
+Search                         InstalledWin32AppsRevision       : {693F1C06-35BD-45F7-99F2-F8936AA351E4}
+                               InstalledPackagedAppsRevision    : {85A34E05-CC8E-470A-A064-13DFF064323F}
+                               TraySearchBoxVisible             : 1
+                               TraySearchBoxVisibleOnAnyMonitor : 1
+                               SearchboxMonitorWidth            : 1280
+                               SearchboxMonitorDPI              : 96
+                               SearchboxWidthOld                : 344
+                               SearchboxWidth                   : 288
+                               IsAssignedAccess                 : 0
+                               CortanaStateLastRun              : {18, 127, 101, 100...}
+                               NamespaceSettingsRevision        : {EB13AC36-56C4-49AB-95AF-9434418BF54F}
+                               OnboardSBEmode                   : 1
+                               AnyAboveLockAppsActive           : 0
+                               SearchGlyphType                  : 2
+
+InstalledWin32AppsRevision       : {693F1C06-35BD-45F7-99F2-F8936AA351E4}
+InstalledPackagedAppsRevision    : {85A34E05-CC8E-470A-A064-13DFF064323F}
+TraySearchBoxVisible             : 1
+TraySearchBoxVisibleOnAnyMonitor : 1
+SearchboxMonitorWidth            : 1280
+SearchboxMonitorDPI              : 96
+SearchboxWidthOld                : 344
+SearchboxWidth                   : 288
+IsAssignedAccess                 : 0
+CortanaStateLastRun              : {18, 127, 101, 100...}
+NamespaceSettingsRevision        : {EB13AC36-56C4-49AB-95AF-9434418BF54F}
+OnboardSBEmode                   : 1
+AnyAboveLockAppsActive           : 0
+SearchGlyphType                  : 2
+PSPath                           : Microsoft.PowerShell.Core\Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search
+PSParentPath                     : Microsoft.PowerShell.Core\Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion
+PSChildName                      : Search
+PSDrive                          : HKCU
+PSProvider                       : Microsoft.PowerShell.Core\Registry
+
+
+==================================================================
+ USBTOR = Looking for strange USB devices connected to the computer
+
+ PROFILELIST = Looking for suspicious profiles on the computer
+
+ NETWORKLIST\PROFILES = strange network names last connected too
+
+ ProcessedSearchRoots = Index search queries by each sids
+
+ SEARCH = Recent file search on the computer
+
+
+
+Now checking Registry Keys 
+
+==================================================================
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION
+
+
+Name                           Property
+----                           --------
+RUN                            SecurityHealth : C:\Windows\system32\SecurityHealthSystray.exe
+
+SecurityHealth : C:\Windows\system32\SecurityHealthSystray.exe
+PSPath         : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN
+PSParentPath   : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION
+PSChildName    : RUN
+PSDrive        : HKLM
+PSProvider     : Microsoft.PowerShell.Core\Registry
+
+
+==================================================================
+RunOnce
+
+==================================================================
+
+
+Now Getting SIDS and User Profiles 
+
+==================================================================
+C:\Windows\system32\config\systemprofile
+C:\Windows\ServiceProfiles\LocalService
+C:\Windows\ServiceProfiles\NetworkService
+C:\Users\rob
+C:\Users\bob
+
+IgnoreCase : True
+LineNumber : 1
+Line       : @{Name=Administrator; SID=S-1-5-21-560952811-1800142268-636105272-500}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-500
+Context    :
+Matches    : {0}
+
+
+==================================================================
+
+IgnoreCase : True
+LineNumber : 2
+Line       : @{Name=bob; SID=S-1-5-21-560952811-1800142268-636105272-1002}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-1002
+Context    :
+Matches    : {0}
+
+
+
+    Hive: HKEY_USERS\S-1-5-21-560952811-1800142268-636105272-1002\Software\Microsoft\Windows\CurrentVersion
+
+
+Name                           Property
+----                           --------
+Run                            OneDrive                                                 : "C:\Users\bob\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background       
+                               org.openvpn.client                                       : C:\Program Files\OpenVPN Connect\OpenVPNConnect.exe --opened-at-login
+                               --minimize
+                               OpenVPN-GUI                                              : C:\Program Files\OpenVPN\bin\openvpn-gui.exe
+                               MicrosoftEdgeAutoLaunch_4ED9772FE1E7553A8F858520D6E0108B : "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                               --no-startup-window --win-session-start
+                                                                                          /prefetch:5
+RunOnce                        Delete Cached Update Binary            : C:\Windows\system32\cmd.exe /q /c del /q
+                               "C:\Users\bob\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe"
+                               Delete Cached Standalone Update Binary : C:\Windows\system32\cmd.exe /q /c del /q
+                               "C:\Users\bob\AppData\Local\Microsoft\OneDrive\StandaloneUpdater\OneDriveSetup.exe"
+                               Uninstall 23.091.0430.0001             : C:\Windows\system32\cmd.exe /q /c rmdir /s /q
+                               "C:\Users\bob\AppData\Local\Microsoft\OneDrive\23.091.0430.0001"
+
+==================================================================
+
+IgnoreCase : True
+LineNumber : 3
+Line       : @{Name=DefaultAccount; SID=S-1-5-21-560952811-1800142268-636105272-503}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-503
+Context    :
+Matches    : {0}
+
+
+==================================================================
+
+IgnoreCase : True
+LineNumber : 4
+Line       : @{Name=Guest; SID=S-1-5-21-560952811-1800142268-636105272-501}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-501
+Context    :
+Matches    : {0}
+
+
+==================================================================
+
+IgnoreCase : True
+LineNumber : 5
+Line       : @{Name=rob; SID=S-1-5-21-560952811-1800142268-636105272-1001}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-1001
+Context    :
+Matches    : {0}
+
+
+
+    Hive: HKEY_USERS\S-1-5-21-560952811-1800142268-636105272-1001\Software\Microsoft\Windows\CurrentVersion
+
+
+Name                           Property
+----                           --------
+Run                            OneDrive                                                 : "C:\Users\rob\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background       
+                               MicrosoftEdgeAutoLaunch_16E376A5B9CD74CA5081BC4F193ADE36 : "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                               --no-startup-window --win-session-start
+                                                                                          /prefetch:5
+                               Steam                                                    : "C:\Program Files (x86)\Steam\steam.exe" -silent
+                               WaveLinkSE                                               : C:\Program Files\Elgato\WaveLink\WaveLinkSE.exe
+                               Discord                                                  : "C:\Users\rob\AppData\Local\Discord\Update.exe" --processStart Discord.exe     
+                               Synapse3                                                 : C:\Program Files (x86)\Razer\Synapse3\WPFUI\Framework\Razer Synapse 3
+                               Host\Razer Synapse 3.exe
+                                                                                          /StartMinimized
+                               Battle.net                                               : "C:\Program Files (x86)\Battle.net\Battle.net.exe" --autostarted
+                               GalaxyClient                                             :
+                               GogGalaxy                                                : C:\Program Files (x86)\GOG Galaxy\GalaxyClient.exe /launchViaAutoStart        
+                               OPENVPN-GUI                                              : C:\Program Files\OpenVPN\bin\openvpn-gui.exe
+                               Wave Link                                                : C:\Program Files\Elgato\WaveLink\WaveLink.exe -runinbk
+RunOnce                        Delete Cached Update Binary            : C:\Windows\system32\cmd.exe /q /c del /q
+                               "C:\Users\rob\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe"
+                               Delete Cached Standalone Update Binary : C:\Windows\system32\cmd.exe /q /c del /q
+                               "C:\Users\rob\AppData\Local\Microsoft\OneDrive\StandaloneUpdater\OneDriveSetup.exe"
+                               Uninstall 23.091.0430.0001             : C:\Windows\system32\cmd.exe /q /c rmdir /s /q
+                               "C:\Users\rob\AppData\Local\Microsoft\OneDrive\23.091.0430.0001"
+
+==================================================================
+
+IgnoreCase : True
+LineNumber : 6
+Line       : @{Name=WDAGUtilityAccount; SID=S-1-5-21-560952811-1800142268-636105272-504}
+Filename   : InputStream
+Path       : InputStream
+Pattern    : S-1-5-21-560952811-1800142268-636105272-504
+Context    :
+Matches    : {0}
+
+
+==================================================================
+
+Name : Administrator
+SID  : S-1-5-21-560952811-1800142268-636105272-500
+
+
+Name : bob
+SID  : S-1-5-21-560952811-1800142268-636105272-1002
+
+
+Name : DefaultAccount
+SID  : S-1-5-21-560952811-1800142268-636105272-503
+
+
+Name : Guest
+SID  : S-1-5-21-560952811-1800142268-636105272-501
+
+
+Name : rob
+SID  : S-1-5-21-560952811-1800142268-636105272-1001
+
+
+Name : WDAGUtilityAccount
+SID  : S-1-5-21-560952811-1800142268-636105272-504
+
+
+
+PS C:\Users\bob> 
