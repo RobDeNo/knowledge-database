@@ -6,7 +6,7 @@ net use * http://live.sysinternals.com
 New-PSDrive -name "SysInt" -PSProvider Filesystem -Root "\\live.sysinternals.com\Tool"
 Get-PSDrive
 echo $env:path #this will view the path
-$env:path+="Y:\"
+$env:path+="Z:\"
 $env:path="(env:path);z:\"
 
 net use * http://live.sysinternals.com; Get-PSDrive; New-PSDrive -name "SysInt" -PSProvider Filesystem -Root "\\live.sysinternals.com\Tool"; $env:path+=";Z:\"
