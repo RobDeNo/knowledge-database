@@ -6,7 +6,7 @@ rsyslog #located on a sysV
 #config file
 /etc/rsyslog.conf
 #service
-/usr/sbinrsyslogd
+/usr/sbin/rsyslogd
 #Information
 cat /etc/rsyslog.d/50-default.conf
 less /var/log/syslog
@@ -21,7 +21,6 @@ cat /etc/logrotate.conf #This log will show how often to log/cut
 /var/log/messages # Legacy catch all messages
 /var/log/syslog #Ubuntu/Debian Catch all
 /dmesg #device messenger that quieries /proc/kmsg 1. Kernel Ring buffer 2. First system logs
-
 ```
 ------------------------------
 # Combing rsyslog

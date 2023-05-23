@@ -201,47 +201,11 @@ jq '{"id.orig_h"}' /home/garviel/conn.log | sort | uniq -c | wc -l
 count the number of lins
 ```
 ----------------------------------
-# Linux Auditing and Logging JSON 310
-## File: /home/garviel/conn.log This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections.
-Use jq to locate and count connections where the destination IP sent more than 40 bytes to the source IP.
-Flag format: #
+# filter file connections in conn log
 
 ```shell
-jq '{"resp_ip_bytes"}' /home/garviel/conn.log | sort
-jq '{"resp_bytes"}' /home/garviel/conn.log | sort | grep -v '40\|null\|resp_bytes": 0' | uniq -c
-jq '{"resp_bytes"}' /home/garviel/conn.log | sort | grep -v '40^Cnull\|"resp_bytes": 0\|{\|}' | uniq -c #Noooo
-jq '{"resp_bytes">40}' /home/garviel/conn.log | sort | grep -v '"resp_bytes": 40\|null\|"resp_bytes": 0\|{\|}' | uniq -c
+jq '.|select(.resp_bytes>40) | ."id.orig_h"' /conn.log
 
-jq '"resp_bytes">40' /home/garviel/conn.log
-jq '.|.select("resp_bytes>40") | "id.orig_h"' /home/garviel/conn.log
-jq '.|select(.resp_bytes>40) | ."id.orig_h"' /home/garviel/conn.log
-
-
-```
-----------------------------------
-# 
-## 
-```shell
-
-```
-----------------------------------
-# 
-## 
-```shell
-
-```
-----------------------------------
-# Linux Auditing and Logging Whut 310
-## Identify the Cyber Attack Technique that Balrog is trying on the machine.
-```shell
-Credential Access
-```
-----------------------------------
-# 
-## 
-```shell
-
-```
 ----------------------------------
 # Linux Auditing and Logging XML 5 15
 ## File: /home/garviel/output.xml Select every IP address with open (in use) ports using XPATH queries and XPATH axes.
@@ -264,23 +228,21 @@ xpath -q -e '//status/@state' /home/garviel/output.xml
 xpath -q -e '//status/@state' /home/garviel/output.xml
 ```
 ----------------------------------
-# Linux Auditing and logging WHUT 5
+# Linux Auditing and logging WHUT 5Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
+Apr 6 13:37:31 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
+Apr 6 14:13:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
+Apr 6 14:13:38 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
+Apr 6 14:15:01 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/
 ## 
 ```shell
 Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\
 
+passwd -exec /bin/sh \;
 
-Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
-Apr 6 13:37:31 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
-Apr 6 14:13:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
-Apr 6 14:13:38 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
-Apr 6 14:15:01 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh \;
 Apr 6 14:15:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh \;
 
 Apr 6 00:00:03 linux-opstation-7qhp systemd-logind[993]: New session 189 of user Frodo.
-Apr 6 09:35:52 linux-opstation-7qhp systemd-logind[993]: New session 190 of user Balrog.
-Apr 6 13:34:19 linux-opstation-7qhp systemd-logind[993]: New session 200 of user Saruman.
-Apr 6 13:58:22 linux-opstation-7qhp systemd-logind[993]: New session 201 of user Saruman.
+
 
 2h,30m,find /etc/passwd -exec /bin/sh \;,2
 ```

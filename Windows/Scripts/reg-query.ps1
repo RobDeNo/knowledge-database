@@ -1,7 +1,7 @@
 #Dependant thing to consider
 
 #add the HKU Drive
-#$New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS
+#New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS
 $forensic ="HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\",
 "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList", 
 "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles",

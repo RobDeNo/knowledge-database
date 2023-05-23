@@ -1,14 +1,11 @@
-# Windows_Browser_Artifacts_1
-## What Sysinternals tool will allow you to read the SQLite3 database containing the web history of chrome?
+# how to find code in a binary
 Strings - Search for ANSI and UNICODE strings in binaryimages.
 -------------------------------------------
-# Windows_Recent_Files_15
-## What is the registry location of recent docs for the current user?
+# find recent docs of current userr?
 View SG 7.1 Locations
 HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
 -------------------------------------------
-# Windows_Bam_15
-## BAM settings are stored in different registry locations based on the version of Windows 10. What version of Windows 10 is workstation2 running? The answer is the 4 digit Windows 10 release (version) number.
+# Find BAM location based on windows version
 ```Powershell
 Get-ComputerInfo | select-object osname,osversion,oshardwareabstractionlayer # This will pull the verison information
 OsName                          OsVersion  OsHardwareAbstractionLayer
@@ -18,8 +15,7 @@ Microsoft Windows 10 Enterprise 10.0.17134 10.0.17134.471
 #version is 1803
 ```
 -------------------------------------------
-# Windows_Last_Access5
-## Figure out the last access time of the hosts file. Flag format: mm/dd/yyyy
+# Last Access time of files
 ```powershell
 Get-ChildItem -Recurse C:\Windows\System32\Drivers\etc\hosts -ErrorAction SilentlyContinue | Select-Object Fullename, LastAccessTime
 # Run the command that will get the child item of the hosts file then using select object to pull out the Fullname and the last accesstime
@@ -147,10 +143,7 @@ C:\Users\student\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\
     Get-Content C:\Users\student\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b81337.automaticDestinations-ms
 ```
 -------------------------------------------
-# Windows_Logs_4
-## Check event logs for a flag string.
-Machine: file-server
-
+# check windows logs
 ```powershell
 Get-Eventlog -LogName Security | ft -wrap | findstr /i "flag"
 Get-Eventlog -LogName System | ft -wrap | findstr /i "flag"
@@ -158,8 +151,7 @@ Get-WinEvent Microsoft-Windows-PowerShell/Operational |Where-Object {$_.Message 
 .......................the flag is: the Flag
 ```
 -------------------------------------------
-# Windows_Recycle_Bin_310
-## Recover the flag from the Recycle Bin. Enter the name of the recycle bin file that contained the contents of the flag, and the contents of the deleted file. Flag format: filename,contents
+# go through recycling bin stuff
 ```powershell
 Get-Content 'C:\$RECYCLE.BIN\S-1-5-21-2881336348-3190591231-4063445930-1003\$R*' #this will get the content for all files in the recyling bin
 Get-content 'C:\Users\vanhe\Documents\file.txt
