@@ -228,22 +228,9 @@ xpath -q -e '//status/@state' /home/garviel/output.xml
 xpath -q -e '//status/@state' /home/garviel/output.xml
 ```
 ----------------------------------
-# Linux Auditing and logging WHUT 5Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
-Apr 6 13:37:31 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\ # notsuccessful
-Apr 6 14:13:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
-Apr 6 14:13:38 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh ;\
-Apr 6 14:15:01 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/
 ## 
 ```shell
-Apr 6 13:35:51 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh {} ;\
-
 passwd -exec /bin/sh \;
-
-Apr 6 14:15:21 linux-opstation-7qhp sudo: Saruman : TTY=pts/0 ; PWD=/home/Saruman ; USER=root ; COMMAND=find /etc/passwd -exec /bin/sh \;
-
-Apr 6 00:00:03 linux-opstation-7qhp systemd-logind[993]: New session 189 of user Frodo.
-
-
 2h,30m,find /etc/passwd -exec /bin/sh \;,2
 ```
 ----------------------------------
