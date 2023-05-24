@@ -47,9 +47,7 @@ cp ..\..\user.name\filename.pdf
 scp student@10.50.38.169:Desktop/filename.pdf
 ```
 --------------------------------------------------------------------------------
-# Windows_AD_Search_Insider_2 10
-The flag is the name of the user who is requesting modified access rights.
-Connect to the share name:
+# filter user
 net use * "\\file-server\share name"
 ```PowerShell
 
@@ -57,11 +55,7 @@ Get-ADUser -filter * -Properties * | select Name,OfficePhone | Sort-Object Name 
 @{Name=user.name; OfficePhone=706-string}
 ```
 --------------------------------------------------------------------------------
-# Windows_AD_Search_Insider_1 10
-## The flag is the name of the file where someone is requesting modified access rights.
-Connect to the share name:
-net use * "\\file-server\share name"
-
+# find ad user
 ```Powershell
 #while being logged into the warrors share i ran the below command
 Get-ChildItem -recurse -force -ErrorAction SilentlyContinue | Where-Object {$_.Name -match ''}
@@ -82,7 +76,7 @@ scp student@10.50.38.169:Desktop/filename.pdf
 
 
 --------------------------------------------------------------------------------
-# Windows_AD_Search_Naming 10
+# find in AD
 ##Find the accounts that contain unprofessional information in the description.
 List the last names in Alphabetical Order, separated by a comma, with no space.
 Flag format: name,name

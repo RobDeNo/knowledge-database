@@ -24,63 +24,54 @@ Fullename LastAccessTime
           5/16/2023 3:34:13 PM
 ```
 -------------------------------------------
-# Windows_Prefetch_15
-## What is the literal path of the prefetch directory?
+# prefetch directory?
 ```powershell
 C:\Windows\Prefetch
 #look through SG 
 ```
 -------------------------------------------
-# Windows_Recycle_Bin_15
-## In the Recycle Bin, there is a file that contains the actual contents of the recycled file. What are the first two characters of this filename?
+# actual contents of the recycled file. 
 ```powershell
 $R 
 #the above hold the actual data of the files
 ```
 -------------------------------------------
-# Windows_Recycle_Bin_25
-## In the Recycle Bin, there is a file that contains the original filename, path, file size, and when the file was deleted. What are the first two characters of this filename?
+# in recycle bin original filename, path, file size, and when the file was deleted.
 ```powershell
 $I
 #The above hold the metadata for the file
 ```
 -------------------------------------------
-# Windows_UserAssist_15
-## What are the first 8 characters of the Globally Unique Identifier (GUID) used to list applications found in the UserAssist registry key (Windows 7 and later)?
+#  first 8 characters of the Globally Unique Identifier (GUID) used to list applications found in the UserAssist registry key 
 ```powershell
 #CEBFF5CD: Executable File Execution
 Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
 #The first 8 didgits of this GUID are folow applications wihthing the userassist
 ```
 -------------------------------------------
-# Windows_UserAssist_25
-## What cipher method are UserAssist files encoded in?
+# cipher method of UserAssist files
 ```powershell
 ROT13
 #see user guide
 ```
 -------------------------------------------
-# Windows_Logs_15
-## What main Windows log would show invalid login attempts?
+#  Windows log would shows invalid login attempts
 ```powershell
 security
 ```
 -------------------------------------------
-# Windows_Logs_25
-## What main Windows log will show whether Windows updates were applied recently?
+#  Windows updates were applied log 
 ```powershell
 system
 ```
 -------------------------------------------
-# Windows_Logs_35
-## When reading logs, you may notice ... at the end of the line where the message is truncated. What format-table switch/argument will display the entire output? Flag format: -argument
+# put at end of logs to see all
 
 ```powershell
 -wrap
 ```
 -------------------------------------------
-# Windows_Browser_Artifacts_210
-## Find the questionable website that a user browsed to (using Chrome), that appears to be malicious. *Note: There are more than one users on the box. Machine: Workstation2 (ssh from Admin_Station)
+# how to view suspicious browser history
 
 ```powershell
 Net user #list out users to see what users are there
@@ -88,13 +79,12 @@ dir C:\Users\ #this will see which users have Profiles
 strings.exe 'C:\users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\History' -accepteula
 strings.exe 'C:\users\Public\AppData\Local\Google\Chrome\User Data\Default\History' -accepteula
 strings.exe 'C:\users\student\AppData\Local\Google\Chrome\User Data\Default\History' -accepteula
-    https://www.exploit-db.com/
+    https://badurl/
 #use strings to look for browser history in each profile till its found
 
 ```
 -------------------------------------------
-# Windows_Recent_Files_210
-## There is a file that was recently opened that may contain PII. Get the flag from the contents of the file. Hint: We're not interested in numbers.
+# check for last recently opened files
 
 ```powershell
 Get-Childitem -Recurse C:\Users\andy.dwyer\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction SilentlyContinue | select FullName, LastAccessTime |ft -wrap
@@ -103,16 +93,15 @@ C:\Users\andy.dwyer\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations
 C:\Users\andy.dwyer\AppData\Roaming\Microsoft\Windows\Recent\artif.lnk
 C:\Users\andy.dwyer\AppData\Roaming\Microsoft\Windows\Recent\artifacts.lnk
 Get-Content C:\Users\andy.dwyer\AppData\Roaming\Microsoft\Windows\Recent\artifacts.lnk
-find C:\Suers\student\Documents\3-14-24.txt # this is where the informaiton is
+find C:\Suers\student\Documents\piifile.txt # this is where the informaiton is
 ```
 artifacts.ps1
 -------------------------------------------
-# Windows_Bam_210
-## Enter the full path of the program that was run on this computer from an abnormal location.
+# find application running from abnormal location 
 ```powershell
 Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\* #use this to view SIDS
-Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*
-C:\Windows\Temp\bad_intentions.exe # this is a file opened by the user
+Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\* WIN 7
+C:\Windows\Temp\badfile.exe # this is a file opened by the user
 wmic useraccount  get caption,sid | more # get the association of the SIDS to users
 WORKSTATION2\andy.dwyer          S-1-5-21-2881336348-3190591231-4063445930-1004
 Get-Itemproperty HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\S-1-5-21-2881336348-3190591231-4063445930-1004
@@ -121,19 +110,18 @@ Get-Itemproperty HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\S-1-5-
 # Enter the name of the questionable file in the prefetch folder.
 ```powershell
 Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select -First 50 #use this command to view the first first pretch files
-BAD_INTENTIONS.EXE-8F2806FC.pf
+badfile.EXE-8F2806FC.pf
 ```
 -------------------------------------------
-# What is the creation time of the questionable file in the prefetch folder?
-Flag format: mm/dd/yyyy
+# show file creation time
+
 ## 
 ```powershell
 Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select -First 50 #This will get all the prefech files to find the suspect ones
 Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select-object FullName, CreationTime
 ```
 -------------------------------------------
-# Windows_Jump_Lists10
-## Find the file in the jump list location that might allow privilege escalation.
+# find bad file in jump list
 ```powershell
 Get-Content C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\artifacts.lnk
 Get-Content C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\System32.lnk
@@ -159,6 +147,3 @@ Get-content 'C:\Users\vanhe\Documents\file.txt
 $R1WANPJ.txt,DontTrashMeyo
 ```
 -------------------------------------------
-# Windows_Logs_415
-## Check event logs for a flag string.
-
