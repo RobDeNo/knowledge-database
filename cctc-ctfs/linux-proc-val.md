@@ -117,7 +117,7 @@ find / -type f -exec grep -H '~/. IMPORTANTBASHFILE ' {} \;
 sudo find / -type f -exec grep -H '.IMPORTANTBASHFILE' {} \;
 # this command will look for a file that is tryign to look for a txt
 #Look through the below folders with the command unitl you find the string
-ANSWER==find /home -name \*.txt -exec cp {} /tmp \;,SERVICENAME.service
+
 service running, check systemd
 /bin/bash -c 'find /home -name \*.txt -exec cp {} /tmp \;,SERVICENAME.service
 ```

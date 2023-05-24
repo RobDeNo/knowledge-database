@@ -71,7 +71,7 @@ auth,authpriv.*                 /var/log/auth.log       #2 -    Critical        
 kern.*                          -/var/log/kern.log      #6 -    Informational    line printer subsystem
 #lpr.*                          -/var/log/lpr.log       #7 -    Debug            network news subsystem
 mail.*                          -/var/log/mail.log      #8      UUCP
-#user.*                         -/var/log/user.log      #9      clock           
+#user.*                         -/findvar/log/user.log      #9      clock           
 #                                                       #10     security/authorization 
 # Logging for the mail system.  Split it up so that     #11     FTP
 # it is easy to write scripts to parse these files.     #12     ntp
@@ -133,3 +133,6 @@ json
 ------------------------------
 # command will read binary file
 last -f /var/log/tmp
+
+
+find / -exec grep -s -i -B 10 -A 10 "SpecialString" {}\
