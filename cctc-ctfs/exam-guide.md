@@ -34,6 +34,7 @@ netstat -anop suspicious, htop to show the trees
 ps -elf, show all Services or systemctl
 - System crontab /etc/crontab
 - User crontab /var/spool/cron/crontab
+  - /usr/sbin/
 - lsof
 # win auditing and Logging
 3 applications

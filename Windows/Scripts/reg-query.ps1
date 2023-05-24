@@ -63,7 +63,6 @@ foreach ($usersid in $sid)
     Get-Item -ErrorAction SilentlyContinue "HKU:\${usersid}\Software\Microsoft\Windows\CurrentVersion\RunOnce"
     Get-ChildItem -ErrorAction SilentlyContinue "HKU:\${usersid}\Software\Microsoft\Windows\CurrentVersion\Run"
     Get-ItemProperty -ErrorAction SilentlyContinue "HKU:\${usersid}\Software\Microsoft\Windows\CurrentVersion\RunOnce"
-    Write-Host "
 Get-LocalUser | Select-Object Name,sid
 
 
