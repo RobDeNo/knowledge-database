@@ -9,6 +9,15 @@ fugitive port = ephemeral
 3. Now key exchange
    1. client -> public (user key)
    2. public -> client (host key)
+4. -X negotiate x11 x40(similar to RDP capabilities)
+ ```shell
+ tcp        0      0 127.0.0.1:6010          0.0.0.0:*               LISTEN      -   
+```
+5. the CLIENT creates the symmetric key
+   1. pulls key from hosts file and encrypts the connection
+# Get them GUIs
+1. terminator
+2. 
 # Situation Awareness
 1. ip addr - shows ipconfig
 2. ip neighbor(future) = replaces ARP -a
@@ -25,3 +34,5 @@ fugitive port = ephemeral
 Class A addresses are in the range of 1-126.xxx.xxx.xxx
 Class B addresses are in the range of 128-191.xxx.xxx.xxx
 Class C addresses are in the range of 192-223.xxx.xxx.xxx
+# RDP
+XFREERDP Syntax: xfreerdp /v:10.50.x.x /u:student /p:password /size:1920x1000 +clipboard
