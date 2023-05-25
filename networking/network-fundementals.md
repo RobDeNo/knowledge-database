@@ -19,7 +19,7 @@ fugitive port = ephemeral
    2. -t = TCP
    3. -l = Listening ports only
    4. -p(optional) = process ID for the 
-5. cat /etc/hosts 
+5. cat /etc/hosts -> dns
 6. cat /etc/services
 # Ip Classes
 Class A addresses are in the range of 1-126.xxx.xxx.xxx
