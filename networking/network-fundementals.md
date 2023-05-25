@@ -36,3 +36,16 @@ Class B addresses are in the range of 128-191.xxx.xxx.xxx
 Class C addresses are in the range of 192-223.xxx.xxx.xxx
 # RDP
 XFREERDP Syntax: xfreerdp /v:10.50.x.x /u:student /p:password /size:1920x1000 +clipboard
+# Data Link Sublayers
+- A
+- P
+- S
+- T
+- N
+- D
+  - LLC ^ 802.2
+  - MAC v IEEE
+# Types of ARP
+Gratutious ARP 
+Proxy ARP - multiple arps but same mac address
+# sudo tcpdump arp -x
