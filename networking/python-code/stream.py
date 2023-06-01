@@ -4,14 +4,14 @@ import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
 # s = socket.socket() this is the same as above because we are using all defaults.
 # use quotes ' ' to convert into a string
-ip_addr = '172.16.80.106'
-port = 2929
+ip_addr = '172.16.82.106'
+port = 5309
 # connect is use to tell it to connect to the ((address, port))
 # no quotes needed because its already a integer value
 s.connect((ip_addr, port))
 # send a string to the target - prefix b'message' to make a bytes-like object.
 # Python3 does not like strings sent by itself
-message = b"Hello"
+message = b"Jenny"
 # = \n is for inline or send carriage return.
 # Send the message to the target. The socket must be connected to a remote socket.
 s.send(message)
