@@ -4,8 +4,8 @@ import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
 # s = socket.socket() this is the same as above because we are using all defaults.
 # use quotes ' ' to convert into a string
-ip_addr = '127.0.0.1'
-port = 1111
+ip_addr = '172.16.80.106'
+port = 2929
 # connect is use to tell it to connect to the ((address, port))
 # no quotes needed because its already a integer value
 s.connect((ip_addr, port))
@@ -27,3 +27,5 @@ data, conn = s.recvfrom(1024)
 print(data.decode('utf-8'))
 # close = function to close connection else it will hang
 s.close()
+## echo "At the Zoo" | nc -lvp 2929
+# CTL + X, Y(save), *enter*
