@@ -127,6 +127,7 @@ nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
 
 #Vertical Scan of UDP ports on one IP using Netcat:
 nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
+nc -nuzvw1 172.16.82.110 1980-1989 2>&1 | grep -E 'succ|open'
 
 #Horizontal Scan a range of IPs for specific TCP ports using Netcat:
 for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
