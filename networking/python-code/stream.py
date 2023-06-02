@@ -27,5 +27,5 @@ data, conn = s.recvfrom(1024)
 print(data.decode('utf-8'))
 # close = function to close connection else it will hang
 s.close()
-## echo "At the Zoo" | nc -lvp 2929
+## /
 # CTL + X, Y(save), *enter*
