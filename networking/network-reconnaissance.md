@@ -308,6 +308,7 @@ wget -r http://localhost:1111
 ssh -p22 student@10.10.0.40 -R 1111:192.168.1.10:22
 telnet localhost 1111 
 
+# Using the dynamic tunnel to get to private host
 
 
 
