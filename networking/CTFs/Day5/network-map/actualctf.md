@@ -60,7 +60,9 @@ Hostname: UNKNOWN
 IP: 172.16.182.106
 Action: Perform Active Reconnaissance
 ----------------------------------------------------------------------------------------------------
-
+Gathered Intelligence: Credentials
+student:password
+vyos:password
 T5
 Hostname: UNKNOWN
 IP: 172.16.182.114

