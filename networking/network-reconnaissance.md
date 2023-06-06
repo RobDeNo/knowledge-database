@@ -291,10 +291,12 @@ wget -r http://localhost:1111
 
 # this will pull the webpage for the .10
 ssh -p22 student@176.16.82.106 -L 1111:192.168.1.10:80
+ssh student@176.16.82.106 -L 1111:192.168.1.10:80
 wget -r http://localhost:1111
 
 # this will pull the webpage for the .10
 ssh -p22 student@176.16.82.106 -L 1111:localhost:23
+ssh student@176.16.82.106 -L 1111:localhost:23
 telnet localhost 1111
 
 # now we are not on the internet host
@@ -308,7 +310,30 @@ wget -r http://localhost:1111
 ssh -p22 student@10.10.0.40 -R 1111:192.168.1.10:22
 telnet localhost 1111 
 
-# Using the dynamic tunnel to get to private host
+# Using the dynamic tunnel to get to private host only for TCP based stuff so you can send and recieve traffic on multiple ports
+ssh student@<ip> -R 1111:(tgt ip):(tgt port) -NT
+ssh -r 1111:(tgt ip):(tgt port) student@(ip) -NT
+#uses proxy chains
+
+- initial tunnel to get into the host A of the network
+ssh student@10.50.30.99 -D 9050 -NT
+- this will create a local tunnel on host A to get to the host B
+ssh student@10.50.30.99 -L 1111:192.168.1.39:22 -NT
+- this will call the original dynamic tunnel and the local on host using the port 11
+ssh student@localhost -P 1111 -D 9050 -NT
+- this will be the local tunnel from host b to host c
+ssh student@localhost -P 1111 -L 1112:10.0.0.50:22 -NT
+- this tunnel uses the dynmic tunnel created on internet host to the local tunnel created on C
+ssh student@localhost -P 1112 -D 9050 -NT
+- this will be the local tunnel from host c to host D
+ssh student@localhost -P 1112 -L 1113:172.16.1.8:22 -NT
+- now we create the dynamic forward ot the local port we created
+ssh student@localhost -P 1113 -D 9050 -NT
+
+
+
+
+
 
 
 
