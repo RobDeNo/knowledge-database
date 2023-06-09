@@ -58,8 +58,38 @@ sudo iptables -t mangle -D
 
 
 sudo iptables -t filter -F #flush all iptable rules
+iptables -t filter -A INPUT -s 10.10.0.40 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -t filter -A OUTPUT -d 10.10.0.40 -p tcp --sport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -t filter -nL --line-numbers
+iptables -t filter -D OUTPUT 1
+sudo shutdown -r 5
+
+iptables -t filter -A OUTPUT -d 10.10.0.40 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -t filter -A INPUT -t tcp -m multiport --ports 22,23,80 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -t filter -D INPUT 1
+iptables -t filter -D OUTPUT 1
+iptables -t filter -D OUTPUT 1
+
+iptables -t filter -D OUTPUT 1
+
+iptables -t filter -P FORWARD ACCEPT
+iptables -t filter -P FORWARD ACCEPT
 
 
+#nfttables
+nft add table ip MY_TABLE
+nft list ruleset
+nft add chain ip MY_TABLE CHAIN_1 { type filter hook input priority 0 \; policy accept \; }
 
+nft add rule ip MY_TABLE CHAIN_1 tcp dport {22, 23, 80} ct state {new, established} accept
+nft add rule ip MY_TABLE CHAIN_2 tcp sport {22, 23, 80} ct state {new, established} accept
+
+nft add rule ip MY_TABLE CHAIN_2 tcp dport {22, 23, 80} ct state {new, established} accept
+nft add chain ip MY_TABLE CHAIN_2 {\; policy drop \;}
+nft add chain ip MY_TABLE CHAIN_1 {\; policy drop \;}
+
+nft list ruleset -A
+nft delete rule MY_TABLE CHAIN_1 handle11
+nft flush chain ip MY_TABLE CHAIN_1
 ```
 
