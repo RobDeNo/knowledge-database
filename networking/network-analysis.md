@@ -25,6 +25,10 @@ telnet localhost 10303
 ssh net1_student@172.20.21.4 -p 6481 -R 10304:localhost:22 -NT
 ssh net1_student@localhost -p 10302 -L 10305:localhost:10304 -NT
 ssh net1_student@localhost -p 10305 -D 9050 -NT
+
+Task 1 IP/NFTables - Host Filtering: T@bl3sth@tF1lt3r
+
+Task 2 IP/NFTables - NAT: N@tF1lt3rsf0rL1f3
 ```
 
 
