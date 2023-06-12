@@ -30,5 +30,22 @@ Task 1 IP/NFTables - Host Filtering: T@bl3sth@tF1lt3r
 
 Task 2 IP/NFTables - NAT: N@tF1lt3rsf0rL1f3
 ```
+```shell
+ssh net1_student@10.50.23.43
+ssh net1_student@10.50.23.43 -D 9050 -NT
 
+ssh net1_student@10.50.23.43 -L 10300:10.1.2.200:23
+telnet localhost 10300
+ssh net1_student@10.1.2.130 -R 10301:localhost:8976
+ssh net1_student@10.50.23.43 -L 10302:localhost:10301
+ssh net1_student@localhost -p 10302 -D 9050 -NT
+
+ssh net1_student@localhost -p 10302 -L 10303:10.2.5.20:22 -NT
+ssh net1_student@localhost -p 10303 -D 9050 -NT
+
+ssh net1_student@localhost -p 10303 -L 10304:10.3.9.39:23 -NT
+telnet localhost 10304 
+ssh net1_student@10.3.9.33 -R 10305:localhost:3597
+ssh net1_student@localhost -p 10303 -L 10306:localhost:10305
+ssh net1_student@localhost -p 10306 -D 9050 -NT
 

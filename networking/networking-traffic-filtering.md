@@ -69,6 +69,7 @@ iptables -t filter -D OUTPUT 1
 iptables -t filter -D OUTPUT 1
 
 iptables -t filter -D OUTPUT 1
+        iptables -t filter -A OUTPUT -p udp -m multiport --ports 6579,4444 -j ACCEPT
 
 iptables -t filter -P FORWARD ACCEPT
 iptables -t filter -P FORWARD ACCEPT
@@ -81,6 +82,7 @@ nft add chain ip MY_TABLE CHAIN_1 { type filter hook input priority 0 \; policy 
 
 nft add rule ip MY_TABLE CHAIN_1 tcp dport {22, 23, 80} ct state {new, established} accept
 nft add rule ip MY_TABLE CHAIN_2 tcp sport {22, 23, 80} ct state {new, established} accept
+        iptables -t filter -A OUTPUT -p udp -m multiport --ports 6579,4444 -j ACCEPT
 
 nft add rule ip MY_TABLE CHAIN_2 tcp dport {22, 23, 80} ct state {new, established} accept
 nft add chain ip MY_TABLE CHAIN_2 {\; policy drop \;}
@@ -90,24 +92,46 @@ nft list ruleset -A
 nft delete rule MY_TABLE CHAIN_1 handle11
 nft flush chain ip MY_TABLE CHAIN_1
 ```
+------------------------------------------------------------------------------------------------------------------------------
 ```shell
-    Allow New and Established traffic to/from via SSH, TELNET, and RDP
-        iptables -t filter -A INPUT -t tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
-    Change the Default Policy in the Filter Table for the INPUT, OUTPUT, and FORWARD chains to DROP
-        iptables -t filter -P INPUT -j DROP
-        iptables -t filter -P OUTPUT -j DROP
-        iptables -t filter -P FORWARD -j DROP
-    Only allow Pivot to perform ping (ICMP) operations to/from
-        iptables -t filter -A INPUT -s 10.10.0.40 -p tcp --dport 22 -j ACCEPT
-        iptables -t filter -A INPUT -p tcp --dport 22 -j DROP
-    Allow ports 6579 and 4444 for both udp and tcp traffic
-        iptables -t filter -A INPUT -t tcp -m multiport --ports 6579,4444 -j ACCEPT
-        iptables -t filter -A INPUT -t udp -m multiport --ports 6579,4444 -j ACCEPT
-    Allow New and Established traffic to/from via HTTP
-        iptables -t filter -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-        iptables -t filter -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-
-
-
-Once these steps have been completed and tested, go to Pivot and open up a netcat listener on port 9001 and wait up to 2 minutes for your flag. If you did not successfully accomplish the tasks above, then you will not receive the flag.
-
+    #Allow New and Established traffic to/from via SSH, TELNET, and RDP
+        iptables -t filter -A INPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+        iptables -t filter -A OUTPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+    #Change the Default Policy in the Filter Table for the INPUT, OUTPUT, and FORWARD chains to DROP
+        iptables -t filter -P INPUT DROP
+        iptables -t filter -P OUTPUT DROP
+        iptables -t filter -P FORWARD DROP
+    #Only allow Pivot to perform ping (ICMP) operations to/from
+        iptables -t filter -A INPUT -s 10.10.0.40 -p icmp --icmp-type echo-request -j ACCEPT
+        iptables -t filter -A OUTPUT -d 10.10.0.40 -p icmp --icmp-type echo-reply -j ACCEPT
+        iptables -t filter -A INPUT -s 10.10.0.40 -p icmp --icmp-type echo-reply -j ACCEPT
+        iptables -t filter -A OUTPUT -d 10.10.0.40 -p icmp --icmp-type echo-request -j ACCEPT
+    #Allow ports 6579 and 4444 for both udp and tcp traffic
+        iptables -t filter -A INPUT -p tcp -m multiport --ports 6579,4444 -j ACCEPT
+        iptables -t filter -A INPUT -p udp -m multiport --ports 6579,4444 -j ACCEPT
+        iptables -t filter -A OUTPUT -p udp -m multiport --ports 6579,4444 -j ACCEPT
+        iptables -t filter -A OUTPUT -p tcp -m multiport --ports 6579,4444 -j ACCEPT
+    #Allow New and Established traffic to/from via HTTP
+        iptables -t filter -A INPUT -p tcp -m multiport --ports 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+        iptables -t filter -A OUTPUT -p tcp -m multiport --ports 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+```
+IP/NFTables - Filtering T1
+Issue: Somewhat unclear rule direction
+Rule: 'Only allow Pivot to perform ping (ICMP) operations to/from"
+Advised Change: "Only allow Pivot to perform and receive ping (ICMP) operations"
+This will make is clear the Pivot should be able to reiceve pings from the Blue Host
+------------------------------------------------------------------------------------------------------------------------------
+IP/NFTables - Filtering T3 5
+```shell
+    #Allow New and Established traffic to/from via SSH, TELNET, and RDP
+    iptables -t filter -A INPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+    iptables -t filter -A OUTPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+    #Change the Default Policy in the Filter Table for the INPUT, OUTPUT, and FORWARD chains to DROP
+    iptables -t filter -P INPUT DROP
+    iptables -t filter -P OUTPUT DROP
+    iptables -t filter -P FORWARD DROP
+    #Allow New and Established traffic to/from via HTTP
+    iptables -t filter -A INPUT -p tcp -m multiport --ports 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+    iptables -t filter -A OUTPUT -p tcp -m multiport --ports 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+    #Once these steps have been completed and tested, go to Pivot and open up a netcat listener on port 9003 and wait up to 2 minutes for your flag. If you did not successfully accomplish the tasks above, then you will not receive the flag.
+```
