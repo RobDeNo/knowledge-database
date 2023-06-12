@@ -29,9 +29,7 @@ type of firewall
          3. TTL 
          4. ECN 
 2. Chains - contain rules
-   1. Prep
-   2. post
-   3. int
+   1. Prep10.10.0.40
    4. out
    5. forward
 3. rules - dictate what to mtach
@@ -92,4 +90,24 @@ nft list ruleset -A
 nft delete rule MY_TABLE CHAIN_1 handle11
 nft flush chain ip MY_TABLE CHAIN_1
 ```
+```shell
+    Allow New and Established traffic to/from via SSH, TELNET, and RDP
+        iptables -t filter -A INPUT -t tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+    Change the Default Policy in the Filter Table for the INPUT, OUTPUT, and FORWARD chains to DROP
+        iptables -t filter -P INPUT -j DROP
+        iptables -t filter -P OUTPUT -j DROP
+        iptables -t filter -P FORWARD -j DROP
+    Only allow Pivot to perform ping (ICMP) operations to/from
+        iptables -t filter -A INPUT -s 10.10.0.40 -p tcp --dport 22 -j ACCEPT
+        iptables -t filter -A INPUT -p tcp --dport 22 -j DROP
+    Allow ports 6579 and 4444 for both udp and tcp traffic
+        iptables -t filter -A INPUT -t tcp -m multiport --ports 6579,4444 -j ACCEPT
+        iptables -t filter -A INPUT -t udp -m multiport --ports 6579,4444 -j ACCEPT
+    Allow New and Established traffic to/from via HTTP
+        iptables -t filter -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+        iptables -t filter -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+
+
+Once these steps have been completed and tested, go to Pivot and open up a netcat listener on port 9001 and wait up to 2 minutes for your flag. If you did not successfully accomplish the tasks above, then you will not receive the flag.
 
