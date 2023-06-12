@@ -193,3 +193,14 @@ nft flush chain ip MY_TABLE CHAIN_1
 
 ```
 sudo snort -r {/path/pcap} -c {/path/rules}
+
+alert tcp 10.10.0.40 any any (msg: "Invalid telnet login";sid:1001;content:"bad password";nocase;flow:to_client , established ;threshhold:type both,track by_src ,count 3 , seconds 10;
+
+
+sudo snort -D -c snort.conf -l /var/log/snort
+sudo tcpdump -r snort.log.1686592904 -x
+sudo tcpdump -r snort.log.1686592904 -x
+sudo snort -D -c snort.conf -l /var/log/snort
+sudo snort -D -c /etc/snort/rules/new.rules -l /var/log/snort
+sudo snort -r attack_analysis1.pcap -C /etc/snort/rules/icmp.rules 
+
