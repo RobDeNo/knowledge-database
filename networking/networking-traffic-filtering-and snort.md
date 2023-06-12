@@ -135,3 +135,61 @@ IP/NFTables - Filtering T3 5
     iptables -t filter -A OUTPUT -p tcp -m multiport --ports 80 -m state --state NEW,ESTABLISHED -j ACCEPT
     #Once these steps have been completed and tested, go to Pivot and open up a netcat listener on port 9003 and wait up to 2 minutes for your flag. If you did not successfully accomplish the tasks above, then you will not receive the flag.
 ```
+------------------------------------------------------------------------------------------------------------------------------
+```shell
+nft add table ip MY_TABLE
+nft list ruleset
+nft add chain ip MY_TABLE INPUT { type filter hook input priority 0 \; policy accept \; }
+nft add chain ip MY_TABLE OUTPUT { type filter hook output priority 0 \; policy accept \; }
+#Input Table
+#Allow New and Established traffic to/from via SSH, TELNET, and RDP
+nft add rule ip MY_TABLE INPUT tcp dport {22, 23, 3389} ct state {new, established} accept
+nft add rule ip MY_TABLE INPUT tcp sport {22, 23, 3389} ct state {new, established} accept
+#Change your chains to now have a policy of Drop
+nft add chain ip MY_TABLE INPUT {\; policy drop \;}
+#Allow ping (ICMP) requests to and from the Pivot.
+nft add rule ip MY_TABLE INPUT icmp type 8 ip saddr 10.10.0.40 accept
+nft add rule ip MY_TABLE INPUT icmp type 0 ip saddr 10.10.0.40 accept
+#Allow ports 5050 and 5150 for both udp and tcp traffic to/from
+nft add rule ip MY_TABLE INPUT tcp dport {5050, 5150} ct state {new, established} accept
+nft add rule ip MY_TABLE INPUT tcp sport {5050, 5150} ct state {new, established} accept
+#Allow New and Established traffic to/from via HTTP
+nft add rule ip MY_TABLE INPUT tcp dport {80} ct state {new, established} accept
+nft add rule ip MY_TABLE INPUT tcp sport {80} ct state {new, established} accept
+
+----------------------------------------------------------------------------------------
+#Output Table
+##Allow New and Established traffic to/from via SSH, TELNET, and RDP
+nft add rule ip MY_TABLE OUTPUT tcp sport {22, 23, 3389} ct state {new, established} accept
+nft add rule ip MY_TABLE OUTPUT tcp dport {22, 23, 3389} ct state {new, established} accept
+#Change your chains to now have a policy of Drop
+nft add chain ip MY_TABLE OUTPUT {\; policy drop \;}
+#Allow ping (ICMP) requests to and from the Pivot.
+nft add rule ip MY_TABLE OUTPUT icmp type 8 ip daddr 10.10.0.40 accept
+nft add rule ip MY_TABLE OUTPUT icmp type 0 ip daddr 10.10.0.40 accept
+#Allow ports 5050 and 5150 for both udp and tcp traffic to/from
+nft add rule ip MY_TABLE OUTPUT tcp dport {5050, 5150} ct state {new, established} accept
+nft add rule ip MY_TABLE OUTPUT tcp sport {5050, 5150} ct state {new, established} accept
+#Allow New and Established traffic to/from via HTTP
+nft add rule ip MY_TABLE OUTPUT tcp dport {80} ct state {new, established} accept
+nft add rule ip MY_TABLE OUTPUT tcp sport {80} ct state {new, established} accept
+t2 9f7a33941828bdafd2755fd20176cdf4
+t3 05e5fb96e2a117e01fc1227f1c4d664c
+t1 467accfb25050296431008a1357eacb1
+467accfb25050296431008a1357eacb1_9f7a33941828bdafd2755fd20176cdf4_05e5fb96e2a117e01fc1227f1c4d664c
+echo "467accfb25050296431008a1357eacb1_9f7a33941828bdafd2755fd20176cdf4_05e5fb96e2a117e01fc1227f1c4d664c" | md5sum
+953e720e688941b15b72c098022c51c3 
+result d3b88e04de1e76482a1972f36734a7d8
+----------------------------------------------------------------------------------------
+
+
+nft add rule ip MY_TABLE CHAIN_2 tcp dport {22, 23, 80} ct state {new, established} accept
+nft add chain ip MY_TABLE CHAIN_2 {\; policy drop \;}
+nft add chain ip MY_TABLE CHAIN_1 {\; policy drop \;}
+
+nft list ruleset -A
+nft delete rule MY_TABLE INPUT handle 21
+nft flush chain ip MY_TABLE CHAIN_1
+
+```
+sudo snort -r {/path/pcap} -c {/path/rules}

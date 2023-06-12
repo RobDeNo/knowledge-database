@@ -5,7 +5,7 @@ cat /etc/p0f/p0f.fp  | more
 - windows usually has larger window sizes than windows
 - p0f requires ROOT
 
-sudo p0f -r > file.log
+sudo p0f -r blah.pcacp > file.log | grep 
 
 # creating a target baseline
 
