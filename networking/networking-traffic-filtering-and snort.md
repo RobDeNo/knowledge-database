@@ -202,5 +202,20 @@ sudo tcpdump -r snort.log.1686592904 -x
 sudo tcpdump -r snort.log.1686592904 -x
 sudo snort -D -c snort.conf -l /var/log/snort
 sudo snort -D -c /etc/snort/rules/new.rules -l /var/log/snort
-sudo snort -r attack_analysis1.pcap -C /etc/snort/rules/icmp.rules 
+sudo snort -r /home/activity_resources/pcaps/ids.pcap -c /etc/snort/rules/cow.rules
 
+START FLAG: this_whole_ids_is_out_of_line
+
+T4 Snort Server (Bob): 10.50.30.212
+
+Login Credentials: netN_studentX:passwordX (N=net number and X=student number)
+
+Alt SSH Port: 25
+
+* DO NOT CREATE YOUR RULES ON THIS SYSTEM * 
+
+
+alert icmp any any -> any any (msg:"Cows";content:"|DEADBEEF|";sid:1000001;)
+
+alert icmp any any -> any any (msg:ICMP detected; sid:111; rev:1;)
+alert icmp 0.0.0.255 any -> any any (msg:"DMZ Ping";itype:0;icode: 8, 0;sid1000002;)
