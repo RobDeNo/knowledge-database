@@ -264,7 +264,6 @@ echo 'COMPROMISE'|base64
 echo 'METAMORPHIC'|base64
 ssh net1_student3@192.168.10.101
 
-
 proxychains ftp -p 192.168.10.101
 proxychains scp net1_student3@192.168.10.101:/usr/share/cctc/capstone-analysis.pcap
 ls
@@ -349,7 +348,7 @@ Nwo=
 #Question 3 : Which rule will look for someone doing a null scan ?
 #Provide only the filename as your answer (i.e. ‘file.rules’) and converted to Base64.
 echo 'tftp.rules'|base64
-find / -type f -exec grep -H 'text-to-find-here' {} \;
+find /etc/snort/rules -type f -exec grep -H 'text-to-find-here' {} \;
 echo 'alien-abductions.rules'|base64
 YWxpZW4tYWJkdWN0aW9ucy5ydWxlcwo=
 -------------------------------------------------------------------------------
