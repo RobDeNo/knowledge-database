@@ -1245,7 +1245,7 @@ table firewall {
 
     # icmp
     icmp type echo-request accept
-
+alert icmp 0.0.0.255 any -> any any (msg:"DMZ Ping";itype:8;icode:0;sid:1000002;)
     # open tcp ports: sshd (22), httpd (80)
     tcp dport {ssh, http} accept
   }

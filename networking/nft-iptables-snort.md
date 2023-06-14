@@ -218,4 +218,5 @@ Alt SSH Port: 25
 alert icmp any any -> any any (msg:"Cows";content:"|DEADBEEF|";sid:1000001;)
 
 alert icmp any any -> any any (msg:ICMP detected; sid:111; rev:1;)
-alert icmp 0.0.0.255 any -> any any (msg:"DMZ Ping";itype:0;icode: 8, 0;sid1000002;)
+
+alert icmp 0.0.0.255 any -> any any (msg:"DMZ Ping";itype:8;icode:0;sid:1000002;)
