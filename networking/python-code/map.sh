@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 echo "Enter network address (e.g. 192.168.0): "
 read net
 echo "Enter starting host range (e.g. 1): "

@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
-ip_addr = '172.16.80.106'
-port = 2930
+ip_addr = '192.168.1.222'
+port = 54321
 # Connect to a remote socket at address.
 # s.connect((ip_addr, port)) # typically used for TCP
-message = b"Message"
+message = b"student"
 #Send data to the socket. The socket should not be connected to a remote socket. Typically used for UDP.
 s.sendto(message, (ip_addr, port))
 #Receive data from the socket. The return value is a pair (bytes, address) where bytes is a bytes object representing the data received and address is the address of the socket sending the data.
