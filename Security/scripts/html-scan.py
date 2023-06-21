@@ -9,4 +9,4 @@ tree = lxml.html.fromstring(page.content)
 authors = tree.xpath('//small[@class="author"]/text()')
 #within the small you looking for osmthing within that class
 
-print ('Authors', authors)ip neigh  
+print ('Authors', authors)
