@@ -71,5 +71,34 @@ undefined4 __cdecl FUN_00401000(char *param_1)
   return uVar2;
 ```
 # Demo 2
+```shell
+undefined4 __cdecl FUN_00401000(char *param_1)
 
+{
+  int iVar1;
+  undefined4 uVar2;
+  
+  iVar1 = _strcmp(param_1,&DAT_0041a000);
+  #DAT is a data location which has strings, click to go to data location
+  #strcmp, compares two strings with subtraction. and then STORES the value within the REX register
+    #the same = 0
+  #string compare is a c library function call
+  #when a call is sent out a return has to come back
+  if (iVar1 == 0) {
+    uVar2 = 0x10080;
+  }
+  else {
+    uVar2 = 0xc;
+  }
+  return uVar2;
+```
+# Demo 10
+```shell
+int __cdecl FUN_00401000(byte *param_1)
 
+{
+  int iVar1;
+  
+  iVar1 = FUN_00405f31(param_1);
+  return iVar1 + 0x42;
+```
