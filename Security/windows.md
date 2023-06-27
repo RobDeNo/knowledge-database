@@ -102,3 +102,5 @@ int __cdecl FUN_00401000(byte *param_1)
   iVar1 = FUN_00405f31(param_1);
   return iVar1 + 0x42;
 ```
+fgets( var, size, area)
+
