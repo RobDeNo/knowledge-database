@@ -1,7 +1,8 @@
 #Dependant thing to consider
-
+Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine
 #add the HKU Drive
 New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS
+
 $sid = Get-LocalUser | Select-Object -ExpandProperty sid #This store the variable for obtaining the user's SIDs
 $check = "HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN",
 "HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RunOnce"
