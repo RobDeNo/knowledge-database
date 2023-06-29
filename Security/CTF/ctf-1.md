@@ -115,7 +115,9 @@ YourTempPassword
 ssh student@
 ssh student@10.50.39.150 -L 10300:192.168.28.120:4242
 1234
-ssh student@10.50.39.150 -p 10300 -L 10301:192.168.28.120:4242
+ssh student@10.50.39.150 -L 10300:192.168.28.120:4242
+ssh student@localhost -p 10300 -D 9050
+YourTempPassword
 |_banner: \xFF\xFD\x18\xFF\xFD \xFF\xFD#\xFF\xFD'
 2222/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 |_banner: SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3
@@ -152,7 +154,7 @@ PORT   STATE SERVICE
 
 Nmap scan report for 192.168.28.3
 Host is up (0.0019s latency).
-Not shown: 999 closed ports
+Not shown: 999 closed ports2
 PORT   STATE SERVICE
 53/tcp open  domain
 
