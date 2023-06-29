@@ -162,7 +162,8 @@ Nmap scan report for 192.168.28.5
 Host is up (0.0021s latency).
 Not shown: 996 closed ports
 PORT     STATE SERVICE
-135/tcp  open  msrpc
+135/tcp  open  msrpcssh student@10.50.39.150 -L 10300:192.168.28.120:4242
+ssh student@10.50.39.150 -p 10300 -D 9050 -NT
 139/tcp  open  netbios-ssn
 445/tcp  open  microsoft-ds
 3389/tcp open  ms-wbt-server
