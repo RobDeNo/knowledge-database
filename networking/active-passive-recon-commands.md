@@ -7,6 +7,7 @@
    2. ping
    3. nmap external ips and port scan
    4. banner grabbing
+   5. host
 # Phase 3
 1. Internal Passive 
    1. ip address / ifconfig / ipconfig
@@ -124,6 +125,7 @@ nc -u 172.16.82.106 53
 
 #Vertical Scan of TCP ports on one IP using Netcat:
 nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
+nc -nzvw1 0.0.0.0 80 2>&1 | grep -E 'succ|open'
 
 #Vertical Scan of UDP ports on one IP using Netcat:
 nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
