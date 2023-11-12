@@ -97,7 +97,6 @@ find C:\Suers\student\Documents\3-14-24.txt # this is where the informaiton is
 ```
 artifacts.ps1
 -------------------------------------------
-# Windows_Bam_210
 ## Enter the full path of the program that was run on this computer from an abnormal location.
 ```powershell
 Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\* #use this to view SIDS
