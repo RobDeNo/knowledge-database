@@ -137,3 +137,11 @@ last -f /var/log/tmp
 
 find / -exec grep -s -i -B 10 -A 10 "SpecialString" {}\
 find / -type f -exec grep -H 'text-to-find-here' {} \;
+find / -type f -exec grep -H 'windows/x64/meterpreter/reverse_tcp' {} \;
+
+
+clear logs
+cat /dev/null > /var/log/*.log 
+history -c
+
+#password brute force over SSH
