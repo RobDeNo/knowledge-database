@@ -30,3 +30,15 @@ find . -type f -size 1033c ! -executable -exec file {} + | grep ASCII
 
 level 6 to 7 z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
 find / -user bandit7 -group bandit6 2>/dev/null
+
+level 7 to 8 TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+cat /home/bandit7/data.txt | grep millionth
+
+level 8 to 9 EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+sort data.txt | uniq -c | egrep "*1 "
+
+level 9 to 10 G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+cat data.txt | grep -a ==
+
+level 10 to 11 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+base64 -d data.txt
