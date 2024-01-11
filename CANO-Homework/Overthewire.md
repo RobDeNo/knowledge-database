@@ -42,3 +42,17 @@ cat data.txt | grep -a ==
 
 level 10 to 11 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
 base64 -d data.txt
+
+11 to 12 The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+cyberchef
+
+12 to 13 wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+mv the datt
+read the hex, rename to proper file strucutre, go back and fortuh
+xxd -r
+gzip -d
+bzip2 -d compressed_data.bz2
+cat compressed_data | Head
+tar -xf compressed_data.tar 
+tar -xf data5.bin
+

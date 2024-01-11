@@ -22,10 +22,13 @@
     6, A1, Expand Filesystem
     6, A4, Interface Names #diable predictable names
 #7 (LAPTOP) create SSH keys
+    ssh-keygen -b 4096
     ssh-copy-id -i pi1 Samsung_SmartcastTV@192.168.8.195
     ssh-copy-id -i pi2 pi2@192.168.8.195 #username not hostname
+    ssh-copy-id -i pi pi@192.168.8.211
 #8 Make copy of ssh keys incase they get deleted
     cp ~/.ssh/pi2.pub pi2.pub.bak
+    cp ~/.ssh/pi.pub pi.pub.bak 
 #9 Harden SSH config on pi
     sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak #backup for errors
     sudo nano /etc/ssh/sshd_config # change
@@ -39,10 +42,12 @@
     sudo apt install wireguard -y
 #11 send wireguard config file to PI
     sudo scp -i ~/.ssh/pi2 /etc/wireguard/pi2-wg0.conf pi2@192.168.8.195:~
-    sudo scp -i ~/.ssh/pi /etc/wireguard/pi-wg0.conf pi@192.168.8.183:~
+    sudo scp -i ~/.ssh/pi /etc/wireguard/pi-wg0.conf pi@192.168.8.211:~
     #move to correct location
-    sudo cp pi-wg0.conf /etc/wireguard
-    sudo wg-quick up pi-wg0
+    sudo cp pi1-wg0.conf /etc/wireguard
+    sudo cp pi2-wg0.conf /etc/wireguard
+    sudo wg-quick up pi1-wg0
+    sudo wg-quick up pi2-wg0
     ping 10.0.0.1
     #set to start at startup
     sudo systemctl enable wg-quick@pi-wg0
