@@ -25,6 +25,18 @@ grep "^cat" /usr/share/dict/american-english #first 3 chararcters to start with
 grep -x "c.t" /usr/share/dict/american-English #the "." is like a question mark, it will find the cat, cot, cut etc
 grep -r cookie ../../ #recursivley look through all your files for a string
 find fonty -name "*doc" exec grep first {} \;
+grep 'word1\|word2\|word3' /path/to/file
+### Search all text files ###
+grep 'word*' *.txt
+### Search all python files for 'wordA' or 'wordB' ###
+grep 'wordA*'\''wordB' *.py
+grep -E 'word1|word2' *.doc
+grep -e string1 -e string2 *.pl
+grep -E "word1|word2" *.c
+### Show all the lines that do not match given pattern/words/strings ###
+grep -v 'bar\|foo' /dir1/dir2/file1
+grep -E -v 'pattern1|pattern2' /path/to/file
+grep -l -f patterns.txt * # this will grep for words in the file
 ##################################################################
 ls -Ra | grep "file"
 #this will recursivley look through directly and find the file named "file"
