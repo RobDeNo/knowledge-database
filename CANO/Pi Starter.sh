@@ -74,6 +74,13 @@
     at+qgps? Provides GPS state
     at+qgps=1 Turns on GPS
     at+qgpscfg=”autogps”,1 Turns on GPS at boot
+    at+qgmr # this will check the firmware of your device
+        #EG25GGBR07A08M2G_30.006.30.006 BAD FIRMWARE
+        sudo apt install fastboot
+
+        echo -ne "AT+QFASTBOOT\r" > /dev/ttyUSB2
+        fastboot flash modem NON-HLOS.ubi
+        fastboot reboot
     ‘CTRL+a’ and then ‘z’			Exits minicom
     ###FOR TELIT GPS
     at$gpsrst	Sets GPS to factory	
