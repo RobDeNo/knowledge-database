@@ -49,6 +49,7 @@ sudo nano /etc/kistmet/kistmet.conf
 #kismet gui (start this on your PIE)
 sudo shutdown -p now
 #kismet RSSI meter
+#you need to have a 1. WIFI CARD, 2 KISMET RUNNING to get this rssi meter
 mv ~/Downloads/Kistmet-RSSI-Bar-Master.zip /opt
 sudo cp /opt
 sudo unzip Kismet-RSSI-Bar-Master.zip
@@ -56,7 +57,9 @@ cd Kismet-RSSI-Bar-master
 -----------------
 sudo apt install xclip python-tk libportaudio2
 sudo apt install python3-pip
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt
+#main.py messing, tyou need to set username and password in the main.py
+https://github.com/GrokkedBandwidth
 
 
 
