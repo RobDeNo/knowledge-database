@@ -73,3 +73,8 @@ ANSWER jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
 openssl s_client -connect localhost:30001 #openssl s_client is the implementation of a simple client that connects to a server using SSL/TLS.
 jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+answer = JQttfApK4SeyHwDlI9SXGR50qclOAil1
+#16 - 17
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+nmap -Pn bandit.labs.overthewire.org -T4 -p 31000-32000
+ssh bandit16@bandit.labs.overthewire.org -p 2220
