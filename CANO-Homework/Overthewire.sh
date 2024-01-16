@@ -75,6 +75,20 @@ openssl s_client -connect localhost:30001 #openssl s_client is the implementatio
 jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 answer = JQttfApK4SeyHwDlI9SXGR50qclOAil1
 #16 - 17
+bandit16@bandit.labs.overthewire.org
 The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 nmap -Pn bandit.labs.overthewire.org -T4 -p 31000-32000
-ssh bandit16@bandit.labs.overthewire.org -p 2220
+openssl s_client -connect localhost:31518
+#once the server gave up the private key, it was copied to the desktop and used to ssh into the box as bandit17
+ssh -i /home/a28/overthewire/bandit17 -p 2220 bandit17@bandit.labs.overthewire.org
+
+#level 17 to 18
+#iniital access 
+ssh -i /home/a28/overthewire/bandit17 -p 2220 bandit17@bandit.labs.overthewire.org
+diff -w passwords.new passwords.old
+< hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+---
+> p6ggwdNHncnmCNxuAt0KtKVq185ZU7AW
+#pivoting access
+ssh -p 2220 bandit18@bandit.labs.overthewire.org
+

@@ -28,8 +28,8 @@ log_title=
 #adding under kismet a user named pi, adding yourself to the kismet group will allow you to call it directly
 sudo usermod -aG kismet pi
 #/etc/kiismet/kismet_site.conf
-log_title=badabing
-log_prefix=./home/collection/wifi
+log_title=laptop
+log_prefix=./
 log_types=kismet,pcapppi,pcapng
 devicefound=00:11:22:33:44:55
 devicefound_timeout=15
@@ -37,6 +37,7 @@ devicelost=00:11:22:33:44:55
 devicelost_timeout=15
 source=wlan1
 gps=gpsd:host=localhost,port2947,reconnect=true
+gps=virtual:lat=39.12552780239233, lon=-76.79239001576157, alt=1234
 #/etc/kismet_filter.conf
 1. selectign what specfificlly you do or do not want to capture
 #/etc/kismet/kistmet_alerts.conf
