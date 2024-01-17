@@ -5,3 +5,5 @@ scrapy startproject wordlist_scrappe
 ### aircrack-ng
 # aircrack-ng.org forum
 sudo apt install aircrack-ng
+#hashcat
+get lists from country agency
