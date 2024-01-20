@@ -42,3 +42,11 @@ sudo apt -y install build-essential libpcap-dev aircrack-ng pixiewps
 
 MAC=$(curl -s https://api.coindesk.com/v1/bpi/currentprice.json | gron | grep EUR.rate_float | cut -d ' ' -f 3 | tr -d ';')
 GET http://kismet:kismet@0.0.0.0:2501/datasource/by-uuid/5FE308BD-0000-0000-0000-00C0CAB46234/source.json | gron | grep kismet.datasource.interface
+
+WGET -O- http://kismet:kismet@10.211.55.14:2501/datasource/by-uuid/5E600813-0000-0000-0000-0000945808A4/source.prettyjson | gron
+WGET -O- http://kismet:kismet@10.211.55.14:2501/devices/views/all/devices.json | gron | grep kismet.device.base.name
+json = {};
+  json["kismet.datasource.type_driver"]["description.kismet.datasource.driver.type"]
+  json["kismet.datasource.uuid"]
+
+POST -O- http://kismet:kismet@10.211.55.14:2501/auth/apikey/generate.cmd
