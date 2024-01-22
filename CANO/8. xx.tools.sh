@@ -42,3 +42,9 @@ sudo apt -y install build-essential libpcap-dev aircrack-ng pixiewps
 
 MAC=$(curl -s https://api.coindesk.com/v1/bpi/currentprice.json | gron | grep EUR.rate_float | cut -d ' ' -f 3 | tr -d ';')
 GET http://kismet:kismet@0.0.0.0:2501/datasource/by-uuid/5FE308BD-0000-0000-0000-00C0CAB46234/source.json | gron | grep kismet.datasource.interface
+
+#Evil Twinning
+1.as the client goes away form theur A location they will still be probing for their old SSID
+2. You give them the one 1, client sends the 2. Now you have the handshake, to hashcat to break.
+##You want to do it ver close to the location
+1. roughly around -100db away from the client
