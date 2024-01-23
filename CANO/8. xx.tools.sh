@@ -48,3 +48,8 @@ GET http://kismet:kismet@0.0.0.0:2501/datasource/by-uuid/5FE308BD-0000-0000-0000
 2. You give them the one 1, client sends the 2. Now you have the handshake, to hashcat to break.
 ##You want to do it ver close to the location
 1. roughly around -100db away from the client
+
+#nmap
+nmap <ip> 192.168.8.201
+
+#

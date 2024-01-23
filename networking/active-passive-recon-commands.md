@@ -181,6 +181,7 @@ nmap -Pn -sT 1172.16.82.96/27 -p 21-23,80
 nmap -sT 172.16.82.106 -p 1-1023
 nmap -sT 172.16.82.106 -p 1024-65535
 nmap -sT 172.16.82.106 -p-
+nmap -sV 192.168.1.89 -p 0-1024
 
     #Identify what type of scan you want to perform:
         -sT - TCP Full Connect (default)
