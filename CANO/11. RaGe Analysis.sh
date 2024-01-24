@@ -9,4 +9,5 @@ Emitter -> Rage Options
         X - Use AP Responses
 Tools -> Preferences
     [] Targets
+     x make sure ony targets are set to geo-locate
 #Rage KEY FOR PLAYBACK AND MISSION PLANNING

@@ -12,13 +12,11 @@ sudo airodump-ng -w lab1 --uptime --manufacturer --wps --bssid 48:22:54:D5:ED:4E
 200 = driving (.2 seconds)
 2000 = for slow walking (2 seconds)
 
-
-
 #1. Best RSSI
-Lab-1
+
 #2 Stations connectedWPS is off
 00:CB:CB:69:14:CB
-58:CB:52:13:F8:6A
+
 #3 How long
 7 hours, 2 min
 #4 type fo encryption

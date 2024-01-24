@@ -1,13 +1,5 @@
 #Target Templates
 #Situation:
-PHASE0: around the site
-PHASE1: initial survey + discovery
----reasses----
-PHAEE2: Tailor route to accespoints, execute focused survey
-PHASE3: position to throw exploit
-PHASE4: 
-    option A: Break onsite
-    Option B: Break back in rear
 #Position:
 8530 Washington Blvd, Jessup, MD 20794
 #Operation:

