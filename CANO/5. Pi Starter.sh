@@ -96,7 +96,7 @@
     #restart the daemon
     sudo systemctl restart gpsd
 #16 Modify SSH to create an alias
-    sudo nano ~/.ssh/config
+    sudo nano ~/. /config
     #add another vpns
     HOST pi2_vpn
     Hostname 10.0.0.5

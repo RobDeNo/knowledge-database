@@ -56,7 +56,7 @@ tar -xf compressed_data.tar
 tar -xf data5.bin
 
 #13 to 14 key
-scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private .
+3 -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private .
 chmod 700 sshkey.private
 ssh -i ~/sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
 ssh -i sshkey
