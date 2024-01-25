@@ -52,4 +52,8 @@ GET http://kismet:kismet@0.0.0.0:2501/datasource/by-uuid/5FE308BD-0000-0000-0000
 #nmap
 nmap <ip> 192.168.8.201
 
-#
+#apt_smz
+pi_setup
+22.04 laptop
+bullseye pi
+
