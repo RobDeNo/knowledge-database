@@ -1,0 +1,123 @@
+import os
+import subprocess
+import time
+from datetime import datetime
+
+# Set the wireless interface to monitor mode
+interface = 'wlan0'
+subprocess.run(['sudo', 'airmon-ng', 'start', interface])
+
+# Path to the persistent known networks file
+known_networks_file = "known_networks.txt"
+
+# Threshold for de-authentication detection
+DEAUTH_THRESHOLD = 5
+
+# Data structure to hold deauth detection data (Client: {AP: count})
+client_deauth_tracking = {}
+
+def load_known_networks():
+    """Load known networks from a file."""
+    known_networks = {}
+    try:
+        with open(known_networks_file, "r") as f:
+            for line in f:
+                bssid, ssid = line.strip().split(',')
+                known_networks[bssid] = ssid
+        print(f"Loaded known networks: {known_networks}")
+    except FileNotFoundError:
+        print("Known networks file not found. Starting with an empty list.")
+    return known_networks
+
+def log_event(event):
+    """Logs the event to a file with a timestamp"""
+    with open("wids_log.txt", "a") as log_file:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_file.write(f"{timestamp} - {event}\n")
+
+def scan_networks(known_networks):
+    """Use airodump-ng to scan for networks and clients"""
+    print("Scanning for networks and clients...")
+    scan_command = ["airodump-ng", "--write", "scan_result", "--output-format", "csv", interface]
+    
+    # Run airodump-ng for a short duration to gather network data
+    process = subprocess.Popen(scan_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    time.sleep(15)  # Adjust scanning time as needed
+    process.terminate()
+
+    # Process scan results (CSV file from airodump-ng)
+    parse_scan_results("scan_result-01.csv", known_networks)
+
+def parse_scan_results(csv_file, known_networks):
+    """Parse the airodump-ng CSV output for suspicious networks and clients"""
+    try:
+        with open(csv_file, "r") as f:
+            lines = f.readlines()
+
+        for line in lines:
+            columns = line.split(',')
+            if len(columns) > 13:
+                bssid = columns[0].strip()
+                ssid = columns[13].strip()
+                encryption = columns[5].strip()
+                signal_strength = columns[8].strip()
+
+                # Detect unsecured networks (open networks)
+                if "OPN" in encryption:
+                    log_event(f"Unsecured network detected: SSID: {ssid}, BSSID: {bssid}")
+
+                # Detect rogue AP (same SSID, different BSSID)
+                if ssid in known_networks.values() and bssid not in known_networks:
+                    log_event(f"Potential rogue AP detected: SSID: {ssid}, BSSID: {bssid}")
+                
+                # Detect weak signal strength (may indicate a rogue AP)
+                if int(signal_strength) < -80:
+                    log_event(f"Weak signal detected (possible rogue AP): SSID: {ssid}, BSSID: {bssid}, Signal: {signal_strength} dBm")
+
+            # Additional check for probe requests (from client lines)
+            elif len(columns) > 6 and len(columns[0].strip()) == 17:  # Client line
+                client_bssid = columns[0].strip()
+                associated_ap = columns[5].strip()
+
+                # Track client reconnection (de-auth attack detection)
+                track_deauth_attack(client_bssid, associated_ap)
+
+    except FileNotFoundError:
+        log_event(f"Scan result file {csv_file} not found.")
+    
+def track_deauth_attack(client_bssid, associated_ap):
+    """Track clients disconnecting and reconnecting to detect de-auth attacks"""
+    if client_bssid and associated_ap:
+        if client_bssid not in client_deauth_tracking:
+            client_deauth_tracking[client_bssid] = {}
+        
+        if associated_ap not in client_deauth_tracking[client_bssid]:
+            client_deauth_tracking[client_bssid][associated_ap] = 0
+        
+        # Increment the count of disconnections
+        client_deauth_tracking[client_bssid][associated_ap] += 1
+
+        # If reconnections exceed the threshold, log a possible de-auth attack
+        if client_deauth_tracking[client_bssid][associated_ap] > DEAUTH_THRESHOLD:
+            log_event(f"Possible de-authentication attack: Client: {client_bssid}, AP: {associated_ap}")
+
+def save_known_network(bssid, ssid):
+    """Save a new known network to the persistent file"""
+    with open(known_networks_file, "a") as f:
+        f.write(f"{bssid},{ssid}\n")
+    log_event(f"Added new known network: SSID: {ssid}, BSSID: {bssid}")
+
+def detect_suspicious_activity():
+    """Continuously monitor for suspicious activity"""
+    known_networks = load_known_networks()
+
+    try:
+        while True:
+            scan_networks(known_networks)
+            time.sleep(60)  # Adjust scan frequency as needed
+    except KeyboardInterrupt:
+        print("Stopping monitoring...")
+        subprocess.run(['sudo', 'airmon-ng', 'stop', interface])
+
+if __name__ == "__main__":
+    detect_suspicious_activity()
