@@ -1,1 +1,0 @@
-sudo tcpdump -neti wlan0
